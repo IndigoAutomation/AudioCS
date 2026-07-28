@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manuale pratico di arrangement e mix per house, tech house, deep house, techno ed electro con Ableton Live 12.">
+  <title>Electronic Music Production Guide â€” Arrangement & Mix</title>
+  <style>
+    :root{
+      --bg:#0b0e14; --panel:#121823; --panel2:#182131; --text:#e9eef7;
+      --muted:#a8b2c3; --line:#2a3850; --accent:#58d6b4; --accent2:#69a9ff;
+      --warn:#ffbf69; --danger:#ff7b7b; --code:#0a111c; --vio:#b48cff; --focus:#ffe08a;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(135deg,#0b0e14,#0f1521 55%,#0b0e14);color:var(--text);font:16px/1.65 Aptos,ui-sans-serif,system-ui,"Segoe UI",sans-serif}
+    .skip-link{position:fixed;z-index:100;top:10px;left:10px;transform:translateY(-160%);padding:9px 12px;border-radius:7px;background:var(--focus);color:#111;font-weight:800;text-decoration:none}
+    .skip-link:focus{transform:translateY(0)}
+    .layout{display:grid;grid-template-columns:285px minmax(0,1fr);min-height:100vh}
+    aside{position:sticky;top:0;height:100vh;overflow:auto;padding:26px 20px;background:rgba(11,14,20,.92);border-right:1px solid var(--line)}
+    .brand{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .brand-title{margin:0 0 6px;font-size:1.25rem;font-weight:800;color:#fff}
+    .brand p{margin:0;color:var(--muted);font-size:.83rem}
+    .nav-label{margin:17px 8px 6px;color:var(--vio);font:800 .68rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
+    .nav-label.mix{color:var(--accent)}
+    nav a{display:block;color:var(--muted);text-decoration:none;font-size:.88rem;padding:7px 10px;border-radius:7px;margin:2px 0}
+    nav a:hover,nav a.is-active{background:var(--panel2);color:var(--accent)}
+    nav a.is-active{box-shadow:inset 2px 0 0 var(--accent)}
+    a:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+    main{width:min(1080px,100%);min-width:0;padding:52px clamp(22px,5vw,70px) 80px;margin:auto}
+    .hero{padding:30px;border:1px solid var(--line);border-radius:16px;background:radial-gradient(circle at 88% 12%,rgba(180,140,255,.15),transparent 34%),radial-gradient(circle at 65% 100%,rgba(88,214,180,.10),transparent 38%),var(--panel);margin-bottom:42px}
+    .eyebrow{color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    .hero h1{font-size:clamp(2rem,4vw,3.4rem);margin:8px 0 14px;line-height:1.15}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .hero-meta span{padding:5px 9px;border:1px solid var(--line);border-radius:6px;background:#0d1420;color:var(--muted);font:700 .73rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.04em;text-transform:uppercase}
+    .phase-map{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-top:24px}
+    .phase-link{display:block;padding:15px 17px;border:1px solid var(--line);border-radius:10px;background:#0d1420;color:var(--text);text-decoration:none}
+    .phase-link:hover{border-color:var(--accent2);background:var(--panel2)}
+    .phase-link strong{display:block;margin-bottom:3px;color:var(--vio);font-size:.9rem}
+    .phase-link.mix strong{color:var(--accent)}
+    .phase-link span{display:block;color:var(--muted);font-size:.8rem}
+    .phase-arrow{display:flex;align-items:center;color:var(--muted);font-size:1.3rem}
+    .chapter{scroll-margin-top:24px;margin:76px 0 32px;padding:22px 24px;border:1px solid var(--line);border-left:5px solid var(--vio);border-radius:0 14px 14px 0;background:linear-gradient(90deg,rgba(180,140,255,.10),transparent 65%)}
+    .chapter.mix{border-left-color:var(--accent);background:linear-gradient(90deg,rgba(88,214,180,.10),transparent 65%)}
+    .chapter-kicker{color:var(--vio);font:800 .72rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}
+    .chapter.mix .chapter-kicker{color:var(--accent)}
+    .chapter h2{margin:7px 0 5px;padding:0;border:0;font-size:clamp(1.55rem,3vw,2.2rem)}
+    .chapter p{margin:0;color:var(--muted)}
+    section{scroll-margin-top:24px}
+    h2{margin:58px 0 16px;font-size:1.75rem;padding-bottom:10px;border-bottom:1px solid var(--line)}
+    h3{margin:25px 0 10px;font-size:1.08rem;color:#fff}
+    p{margin:0 0 14px}
+    .lead{color:#d0d8e6;font-size:1.05rem}
+    .note,.warning,.tip{border-left:4px solid var(--accent2);padding:14px 16px;margin:18px 0;border-radius:0 9px 9px 0;background:rgba(105,169,255,.08)}
+    .warning{border-left-color:var(--warn);background:rgba(255,191,105,.08)}
+    .tip{border-left-color:var(--accent);background:rgba(88,214,180,.08)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0}
+    .card{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--panel)}
+    .card h3{margin-top:0}
+    ul{padding-left:20px;margin:10px 0 0}
+    li{margin:7px 0}
+    code,.chain{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;color:#c5f7ea;background:var(--code);border:1px solid #26364c;border-radius:6px;padding:2px 6px}
+    .chain{display:block;padding:12px 14px;line-height:1.8;margin:12px 0}
+    .element{margin:28px 0;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+    .element h3{color:var(--accent);margin:0 0 14px;font-size:1.25rem}
+    .label{display:inline-block;margin-right:6px;padding:2px 8px;border-radius:999px;background:#21354a;color:#9fd0ff;font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+    .flow{margin:18px 0;padding:0;list-style:none}
+    .flow li{padding:15px 17px;margin:10px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+    .flow strong{color:var(--accent)}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border-radius:10px;border:1px solid var(--line);background:var(--panel);overflow:hidden}
+    th,td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+    th{background:#1b283a;color:#bce9ff;font-size:.85rem}
+    tr:last-child td{border-bottom:0}
+    .footer{margin-top:56px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line);padding-top:22px}
+
+    /* ===== GRAFICA ===== */
+    .fig{background:#0d1420;border:1px solid var(--line);border-radius:14px;padding:18px;margin:22px 0}
+    .fig-title{font-size:.8rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+    .fig-cap{color:var(--muted);font-size:.84rem;margin-top:10px}
+    svg{display:block;width:100%;height:auto}
+    .mobile-only{display:none}
+    .plot-key,.meter-key,.pat-key{display:flex;flex-wrap:wrap;gap:10px 16px;margin:12px 0 0;color:var(--muted);font-size:.78rem}
+    .key-item{display:inline-flex;align-items:center;gap:7px}
+    .key-swatch{width:18px;height:4px;border-radius:4px;background:var(--accent)}
+    .key-swatch.dashed{height:0;border-top:3px dashed var(--accent2);background:none}
+    .key-swatch.impulse{width:5px;height:15px;background:var(--accent)}
+
+    /* Grafici responsive: testo HTML, forme grafiche separate */
+    .energy-mobile,.transition-mobile{display:none}
+    .energy-steps{display:grid;grid-template-columns:32fr 16fr 32fr 24fr 8fr 48fr 8fr 16fr 24fr;gap:3px;align-items:end;height:170px;padding-top:14px}
+    .energy-step{min-width:0;height:var(--level);border:1px solid currentColor;border-radius:6px 6px 2px 2px;background:color-mix(in srgb,currentColor 18%,transparent);display:flex;align-items:flex-start;justify-content:center;padding:6px 2px;color:var(--vio);font:800 .66rem/1.15 ui-monospace,Menlo,monospace;text-align:center}
+    .energy-step:nth-child(1),.energy-step:nth-child(9){color:var(--accent)}
+    .energy-step:nth-child(2),.energy-step:nth-child(5){color:var(--warn)}
+    .energy-step:nth-child(4),.energy-step:nth-child(7){color:var(--accent2)}
+    .genre-profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .genre-profile{border:1px solid var(--line);border-radius:10px;padding:12px;background:#10192b}
+    .genre-profile h3{margin:0 0 3px;font-size:.9rem;color:var(--profile-color)}
+    .genre-profile p{margin:0 0 10px;color:var(--muted);font-size:.76rem}
+    .profile-bars{height:120px;display:grid;grid-template-columns:repeat(9,1fr);gap:3px;align-items:end;border-bottom:1px solid var(--line);background:repeating-linear-gradient(to top,transparent 0 29px,rgba(42,56,80,.6) 29px 30px)}
+    .profile-bars span{height:var(--h);min-height:5px;border-radius:3px 3px 0 0;background:var(--profile-color);opacity:.82}
+    .profile-axis{display:flex;justify-content:space-between;color:var(--muted);font-size:.68rem;margin-top:5px}
+
+    /* Mappa frequenze CSS */
+    .freqmap{display:grid;gap:8px;margin-top:8px}
+    .frow{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center}
+    .frow .fname{font-size:.82rem;color:#fff;text-align:right;padding-right:4px}
+    .fbar{position:relative;height:26px;border-radius:6px;background:linear-gradient(90deg,
+      #1a2438 0 15.9%, /* sub: 20-60 Hz */
+      #223050 15.9% 36.6%, /* bass: 60-250 Hz */
+      #263c58 36.6% 46.6%, /* low-mid: 250-500 Hz */
+      #2c4660 46.6% 66.7%, /* mid: 500 Hz-2 kHz */
+      #33506a 66.7% 86.7%, /* high-mid: 2-8 kHz */
+      #3a5a74 86.7% 100%); /* high: 8-20 kHz */
+      overflow:hidden}
+    .fzone{position:absolute;top:0;bottom:0;border-radius:6px;opacity:.9}
+    .fzone.cut{background:rgba(255,123,123,.55)}
+    .fzone.body{background:rgba(88,214,180,.55)}
+    .fzone.boost{background:rgba(105,169,255,.55)}
+    .fzone.warn{background:rgba(255,191,105,.55)}
+    .flegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:.78rem;color:var(--muted)}
+    .flegend span{display:inline-flex;align-items:center;gap:6px}
+    .dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+    .freq-axis{display:grid;grid-template-columns:110px 1fr;gap:10px;margin:4px 0 8px}
+    .freq-axis-track{position:relative;height:26px;border-bottom:1px solid var(--line)}
+    .freq-axis-track span{position:absolute;bottom:4px;transform:translateX(-50%);color:var(--muted);font:700 .66rem/1 ui-monospace,Menlo,monospace;white-space:nowrap}
+    .freq-axis-track span:first-child{transform:none}.freq-axis-track span:last-child{transform:translateX(-100%)}
+    .freq-cards{display:none}
+
+    /* Bande su assi logaritmici reali */
+    .range-chart{display:grid;gap:10px}
+    .range-row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+    .range-label{font-size:.8rem;font-weight:750;text-align:right;color:#fff}
+    .range-track{position:relative;height:34px;border-radius:6px;background:repeating-linear-gradient(90deg,#10192b 0 calc(10% - 1px),#26364c calc(10% - 1px) 10%)}
+    .range-segment{position:absolute;top:4px;bottom:4px;border:1px solid currentColor;border-radius:6px;background:color-mix(in srgb,currentColor 24%,transparent);color:var(--accent);min-width:3px}
+    .range-segment.sub{color:var(--accent2)}.range-segment.mid{color:var(--vio)}.range-segment.shared{color:var(--warn)}
+    .range-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+    .range-note{border-left:3px solid var(--accent2);padding:8px 10px;background:rgba(105,169,255,.07);font-size:.8rem;color:var(--muted)}
+
+    /* Meter CSS */
+    .level-meter{padding-top:35px}
+    .meter-track{position:relative;height:42px;border:1px solid var(--line);border-radius:8px;background:#10192b}
+    .meter-fill{position:absolute;inset:0 auto 0 0;width:60%;border-radius:7px;background:linear-gradient(90deg,#2c4660,var(--accent2))}
+    .meter-target,.meter-risk{position:absolute;top:-10px;bottom:-10px;border:1px dashed currentColor;border-radius:6px;background:color-mix(in srgb,currentColor 13%,transparent)}
+    .meter-target{left:60%;width:10%;color:var(--accent)}.meter-risk{left:90%;width:10%;color:var(--danger)}
+    .meter-marker{position:absolute;left:60%;top:-18px;bottom:-18px;width:2px;background:#fff}
+    .meter-tag{position:absolute;bottom:calc(100% + 13px);transform:translateX(-50%);font-size:.74rem;font-weight:800;white-space:nowrap}
+    .meter-tag.target{left:65%;color:var(--accent)}.meter-tag.risk{left:95%;color:var(--danger)}
+    .meter-axis{position:relative;height:30px;color:var(--muted);font:700 .7rem/1 ui-monospace,Menlo,monospace}
+    .meter-axis span{position:absolute;top:10px;transform:translateX(-50%)}
+    .meter-axis span:first-child{transform:none}.meter-axis span:last-child{transform:translateX(-100%)}
+
+    /* Inviluppi dinamici */
+    .plot-shell{border:1px solid var(--line);border-radius:10px;background:#10192b;padding:8px}
+    .plot-shell svg{aspect-ratio:3.5/1}
+    .parameter-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    .parameter-card{padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);font-size:.78rem;color:var(--muted)}
+    .parameter-card strong{display:block;color:#fff;margin-bottom:2px}
+
+    /* Stereo: frequenza verticale, larghezza orizzontale */
+    .stereo-field{position:relative;height:360px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(to top,rgba(88,214,180,.06),transparent 42%),repeating-linear-gradient(to top,transparent 0 24.7%,rgba(42,56,80,.7) 24.7% 25%);overflow:hidden}
+    .width-cone{position:absolute;inset:25px 45px 32px;clip-path:polygon(10% 0,90% 0,55% 100%,45% 100%);background:linear-gradient(to top,rgba(88,214,180,.2),rgba(180,140,255,.13));border-top:1px solid var(--vio)}
+    .stereo-center{position:absolute;top:22px;bottom:28px;left:50%;border-left:1px dashed var(--line)}
+    .stereo-item{position:absolute;left:50%;top:var(--y);transform:translate(-50%,-50%);width:var(--w);max-width:82%;padding:5px 8px;border:1px solid var(--item-color,var(--accent2));border-radius:999px;background:#162237;color:#fff;text-align:center;font-size:.75rem;font-weight:750}
+    .stereo-axis-y{position:absolute;left:8px;top:16px;bottom:26px;display:flex;flex-direction:column;justify-content:space-between;color:var(--muted);font-size:.68rem}
+    .stereo-axis-x{position:absolute;left:40px;right:40px;bottom:5px;display:flex;justify-content:space-between;color:var(--muted);font-size:.68rem}
+    .utility-panel{border:1px solid var(--line);border-radius:12px;padding:14px;background:#10192b}
+    .utility-panel h3{margin:0 0 10px;color:var(--accent);font-size:.9rem}
+    .utility-list{display:grid;gap:7px}
+    .utility-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:6px;font-size:.78rem}
+    .utility-row span:last-child{color:#fff;text-align:right;font-family:ui-monospace,Menlo,monospace}
+
+    /* Flowchart decisionale */
+    .flowchart{display:grid;gap:12px;margin:20px 0}
+    .fc-row{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;align-items:stretch;gap:0}
+    .fc-box{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:var(--panel2)}
+    .fc-box h4{margin:0 0 6px;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+    .fc-box.sym{border-color:#5a3a3a;background:rgba(255,123,123,.07)}
+    .fc-box.sym h4{color:var(--danger)}
+    .fc-box.dia{border-color:#5a4a2f;background:rgba(255,191,105,.07)}
+    .fc-box.dia h4{color:var(--warn)}
+    .fc-box.fix{border-color:#2f5a4a;background:rgba(88,214,180,.07)}
+    .fc-box.fix h4{color:var(--accent)}
+    .fc-box p{margin:0;font-size:.88rem}
+    .fc-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.4rem}
+    .fc-sep{display:none}
+
+    /* Signal chain grafica */
+    .chainviz{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0}
+    .node{border:1px solid var(--accent2);background:#14213a;color:#cfe3ff;border-radius:8px;padding:8px 13px;font-size:.85rem;font-family:ui-monospace,Menlo,monospace}
+    .node.opt{border-style:dashed;opacity:.75}
+    .node.bus{border-color:var(--accent);color:#c5f7ea}
+    .arr{color:var(--muted);font-size:1.1rem}
+    .table-wrap{max-width:100%;overflow-x:auto}
+
+    /* Arrangement timeline */
+    .tl{display:grid;gap:6px;margin-top:10px}
+    .tl-row{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center}
+    .tl-name{font-size:.8rem;color:#fff;text-align:right;font-weight:700;padding-right:4px}
+    .tl-lane{position:relative;height:22px;border-radius:5px;background:#10192b}
+    .tl-block{position:absolute;top:2px;bottom:2px;border-radius:4px;font-size:.62rem;line-height:18px;text-align:center;color:#0b0e14;font-weight:800;white-space:nowrap;overflow:hidden}
+    .b-kick{background:#58d6b4}.b-sub{background:#69a9ff}.b-mid{background:#b48cff}
+    .b-hat{background:#ffd166}.b-clap{background:#ff9f6e}.b-lead{background:#7ee0ff}
+    .b-pad{background:#8fa3c8}.b-vox{background:#ff8fb0}.b-fx{background:#6b7f9e}
+    .tl-block.ghost{opacity:.35}
+    .tl-head{display:grid;grid-template-columns:96px 1fr;gap:10px;margin-top:18px}
+    .tl-secs{position:relative;height:34px}
+    .tl-sec{position:absolute;top:0;bottom:0;border:1px solid var(--line);border-radius:6px;font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;color:#d0d8e6;overflow:hidden;white-space:nowrap}
+    .tl-sec.intro{background:rgba(88,214,180,.10)}.tl-sec.build{background:rgba(255,191,105,.12)}
+    .tl-sec.drop{background:rgba(105,169,255,.15)}.tl-sec.break{background:rgba(180,140,255,.12)}
+    .tl-sec.outro{background:rgba(143,163,200,.12)}
+    .tl-key{display:none;flex-wrap:wrap;gap:5px;margin:9px 0 12px;padding-left:80px}
+    .tl-key span{padding:3px 6px;border:1px solid var(--line);border-radius:4px;color:var(--muted);font:700 .62rem/1.2 ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase}
+    .tl-key .intro{border-color:rgba(88,214,180,.55)}.tl-key .build{border-color:rgba(255,191,105,.55)}
+    .tl-key .drop{border-color:rgba(105,169,255,.65)}.tl-key .break{border-color:rgba(180,140,255,.6)}
+    .tl-key .outro{border-color:rgba(143,163,200,.6)}
+    .ruler{display:grid;grid-template-columns:96px 1fr;gap:10px;margin-bottom:6px}
+    .ruler-track{position:relative;height:18px;font-size:.66rem;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+    .ruler-track span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+    .ruler-track span:first-child{transform:none}.ruler-track span:last-child{transform:translateX(-100%)}
+    .anat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+    .anat div{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--panel2);font-size:.84rem}
+    .anat strong{display:block;color:var(--accent);font-size:.75rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px}
+    .pat{display:grid;gap:5px;margin-top:10px}
+    .pat-row{display:grid;grid-template-columns:96px repeat(16,1fr);gap:3px;align-items:center}
+    .pat-name{font-size:.74rem;color:#fff;text-align:right;padding-right:6px;font-weight:700}
+    .cell{height:20px;border:1px solid #1b2940;border-radius:3px;background:#10192b}
+    .cell.on,.cell.half{border-color:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+    .cell.b-kick{background:#58d6b4}.cell.b-sub{background:#69a9ff}.cell.b-mid{background:#b48cff}
+    .cell.b-hat{background:#ffd166}.cell.b-clap{background:#ff9f6e}.cell.b-lead{background:#7ee0ff}
+    .cell.b-pad{background:#8fa3c8}.cell.b-vox{background:#ff8fb0}.cell.b-fx{background:#6b7f9e}
+    .cell.half{opacity:.55}
+    .pat-legend{font-size:.72rem;color:var(--muted);margin-top:8px}
+    .pat-head{display:grid;grid-template-columns:96px repeat(16,1fr);gap:3px;align-items:end}
+    .pat-head span{font:700 .63rem/1 ui-monospace,Menlo,monospace;color:var(--muted);text-align:center}
+    .pat-head span:nth-child(4n+2){color:#fff}
+    .pat-mobile{display:none;gap:9px}
+    .pat-mobile-row{border:1px solid var(--line);border-radius:9px;padding:9px;background:#10192b}
+    .pat-mobile-row strong{display:block;margin-bottom:7px;font-size:.82rem}
+    .pat-mobile-beats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .beat-head,.beat-cells{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;text-align:center}
+    .beat-head{margin-bottom:3px;color:var(--muted);font:700 .75rem/1 ui-monospace,Menlo,monospace}
+    .beat-head span:first-child{color:#fff}
+    .beat-cells i{height:13px;border:1px solid #2a3850;border-radius:3px;background:#0d1420}
+    .beat-cells i.hit{background:var(--hit-color);border-color:rgba(255,255,255,.25)}
+    .beat-cells i.ghost{background:var(--hit-color);opacity:.55;border-style:dashed}
+
+    /* Build a corsie */
+    .transition-lanes{display:grid;gap:8px}
+    .transition-ruler,.transition-row{display:grid;grid-template-columns:112px 1fr;gap:10px;align-items:center}
+    .transition-track{position:relative;height:30px;border-radius:6px;background:repeating-linear-gradient(90deg,#10192b 0 calc(6.25% - 1px),#26364c calc(6.25% - 1px) 6.25%)}
+    .transition-label{text-align:right;color:#fff;font-size:.78rem;font-weight:750}
+    .transition-segment{position:absolute;top:4px;bottom:4px;border:1px solid currentColor;border-radius:5px;background:color-mix(in srgb,currentColor 22%,transparent)}
+    .transition-ruler .transition-track{height:22px;background:none;border-bottom:1px solid var(--line)}
+    .transition-ruler span{position:absolute;bottom:5px;color:var(--muted);font:700 .65rem/1 ui-monospace,Menlo,monospace;transform:translateX(-50%)}
+    .transition-ruler span:first-child{transform:none}.transition-ruler span:last-child{transform:translateX(-100%);text-align:right}
+    .transition-downbeat{position:absolute;top:-8px;bottom:-8px;right:0;border-right:2px dashed var(--warn)}
+
+    /* Return rack e guida per sorgente */
+    .return-rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin:20px 0}
+    .return-card{position:relative;border:1px solid var(--line);border-top:3px solid var(--return-color);border-radius:10px;padding:14px;background:#10192b}
+    .return-card h3{margin:0 0 3px;padding-right:28px;color:#fff;font-size:.98rem}
+    .return-card>p{margin:0 0 11px;color:var(--muted);font-size:.75rem}
+    .return-id{position:absolute;top:10px;right:10px;color:var(--return-color);font:900 .9rem/1 ui-monospace,Menlo,Consolas,monospace}
+    .return-settings{display:grid;gap:5px;margin:0}
+    .return-settings div{display:grid;grid-template-columns:58px 1fr;gap:7px;padding-top:5px;border-top:1px solid #26364c;font-size:.72rem}
+    .return-settings dt{color:var(--muted)}.return-settings dd{margin:0;color:#fff;font-weight:700}
+    .source-guide{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#10192b;margin:16px 0}
+    .source-head,.source-row{display:grid;grid-template-columns:120px 1.05fr 1fr 1.15fr}
+    .source-head{background:#1b283a;color:#bce9ff;font-size:.76rem;font-weight:850}
+    .source-head>span,.source-row>div{padding:9px 10px;border-right:1px solid var(--line)}
+    .source-head>span:last-child,.source-row>div:last-child{border-right:0}
+    .source-row{border-top:1px solid var(--line);font-size:.76rem}
+    .source-row>div:first-child{color:#fff;font-weight:800;background:#121d2d}.source-row>div:not(:first-child){color:var(--muted)}
+    .source-row strong{color:#fff}.source-label{display:none}
+    .tempo-reference{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:7px;margin:12px 0}
+    .tempo-reference div{border:1px solid var(--line);border-radius:8px;padding:9px;background:#10192b;text-align:center}
+    .tempo-reference strong{display:block;color:var(--accent2);font:850 .78rem/1.2 ui-monospace,Menlo,Consolas,monospace}
+    .tempo-reference span{display:block;margin-top:3px;color:#fff;font:750 .74rem/1.2 ui-monospace,Menlo,Consolas,monospace}
+    .source-links a{color:var(--accent2)}
+
+    /* Delay & Reverb calculator */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .calc-shell{margin:22px 0;padding:20px;border:1px solid var(--line);border-radius:14px;background:#0d1420}
+    .tempo-console{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(280px,1.2fr);gap:16px;align-items:stretch}
+    .tempo-input-panel,.beat-anchor{border:1px solid var(--line);border-radius:11px;padding:16px;background:var(--panel2)}
+    .tempo-input-panel label{display:block;margin-bottom:8px;color:var(--accent);font-size:.76rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+    .bpm-input-wrap{display:flex;align-items:baseline;gap:10px}
+    .bpm-input-wrap input{min-width:0;width:100%;appearance:textfield;border:1px solid #46627e;border-radius:8px;padding:8px 10px;background:#0a111c;color:#fff;font:800 clamp(2rem,5vw,3.3rem)/1 ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+    .bpm-input-wrap input::-webkit-inner-spin-button,.bpm-input-wrap input::-webkit-outer-spin-button{appearance:none;margin:0}
+    .bpm-input-wrap input:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+    .bpm-unit{color:var(--muted);font:800 .8rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em}
+    .calc-error{margin:8px 0 0;color:var(--danger);font-size:.8rem}
+    .beat-anchor{display:grid;grid-template-columns:1fr auto;grid-template-areas:"label value" "bar value";align-items:center;column-gap:18px;background:linear-gradient(135deg,rgba(105,169,255,.12),rgba(88,214,180,.06)),var(--panel2)}
+    .beat-anchor span{grid-area:label;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+    .beat-anchor strong{grid-area:value;color:#fff;font:850 clamp(1.7rem,4vw,2.7rem)/1 ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .beat-anchor small{grid-area:bar;color:var(--accent2);font-size:.8rem}
+    .beat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:12px 0 22px}
+    .beat-strip i{height:9px;border-radius:99px;background:#1d2c43;border:1px solid #324865}
+    .beat-strip i:first-child{background:var(--accent);border-color:var(--accent)}
+    .calc-section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:24px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+    .calc-section-title h3{margin:0;color:#fff}
+    .calc-section-title span{color:var(--muted);font-size:.75rem;text-align:right}
+    .reverb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .reverb-card{border:1px solid var(--line);border-radius:10px;padding:13px;background:#111b2b}
+    .reverb-card h4{margin:0;color:var(--accent);font-size:.9rem}
+    .reverb-card>span{display:block;margin:1px 0 10px;color:var(--muted);font-size:.72rem}
+    .reverb-values{display:grid;gap:6px}
+    .reverb-value{display:flex;justify-content:space-between;gap:10px;padding-top:6px;border-top:1px solid #27364c;font-size:.76rem}
+    .reverb-value span{color:var(--muted)}.reverb-value strong{color:#fff;text-align:right;font-family:ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+    .delay-grid{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#10192b}
+    .delay-head,.delay-row{display:grid;grid-template-columns:120px repeat(3,minmax(0,1fr))}
+    .delay-head{background:#1b283a;color:#bce9ff;font-size:.78rem;font-weight:850}
+    .delay-head>span,.delay-row>div{padding:10px 12px;border-right:1px solid var(--line)}
+    .delay-head>span:last-child,.delay-row>div:last-child{border-right:0}
+    .delay-row{border-top:1px solid var(--line)}
+    .delay-note{display:flex;flex-direction:column;justify-content:center;background:#121d2d}
+    .delay-note strong{color:#fff;font-size:.88rem}.delay-note span{color:var(--muted);font-size:.68rem}
+    .delay-value-cell{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}
+    .delay-value-cell strong{color:#fff;font:750 .8rem/1.2 ui-monospace,Menlo,Consolas,monospace}.delay-value-cell>span{color:var(--muted);font:700 .7rem/1.2 ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+    .delay-kind{display:none}
+    .calc-formula{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+    .calc-formula div{padding:9px 10px;border-left:3px solid var(--accent2);background:rgba(105,169,255,.07);font-size:.75rem;color:var(--muted)}
+    .calc-formula strong{display:block;color:#fff;margin-bottom:2px}
+
+    /* Stereo field */
+    .stereo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:850px){
+      .layout{display:block}
+      aside{position:sticky;z-index:20;top:0;height:auto;overflow:hidden;padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+      .brand{display:none}
+      nav{display:flex;gap:6px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
+      nav a{flex:0 0 auto;white-space:nowrap;margin:0;border:1px solid var(--line);background:#0d1420}
+      nav a.is-active{box-shadow:inset 0 -2px 0 var(--accent)}
+      .nav-label{flex:0 0 auto;display:flex;align-items:center;margin:0 2px;padding:0 6px}
+      main{padding-top:30px}
+      section,.chapter{scroll-margin-top:68px}
+      .reverb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:640px){
+      .grid,.stereo{grid-template-columns:1fr}
+      nav{grid-template-columns:1fr}
+      .hero{padding:22px}
+      .element{padding:17px}
+      table{min-width:680px;font-size:.86rem}
+      .desktop-only{display:none!important}.mobile-only{display:block}
+      .energy-mobile,.transition-mobile{display:grid}
+      .genre-profiles{grid-template-columns:1fr}
+      .profile-bars{height:92px}
+      .fc-row{grid-template-columns:1fr;padding:10px;border:1px solid var(--line);border-radius:12px;background:#0b111c}
+      .fc-arrow{transform:rotate(90deg);height:34px}
+      .frow{grid-template-columns:78px 1fr}
+      .freq-axis{grid-template-columns:78px 1fr}.freq-axis-track span{font-size:.6rem}
+      .freqmap.desktop-only{display:none!important}.freq-cards{display:grid;gap:9px}
+      .freq-card{border:1px solid var(--line);border-radius:9px;padding:10px;background:#10192b}
+      .freq-card strong{display:block;margin-bottom:4px;color:#fff}.freq-card span{display:block;color:var(--muted);font-size:.78rem}
+      .phase-map{grid-template-columns:1fr}.phase-arrow{justify-content:center;transform:rotate(90deg)}
+      .tl-row,.tl-head,.ruler{grid-template-columns:70px 1fr}.tl-name{font-size:.68rem}
+      .tl-secs{height:14px}.tl-sec{font-size:0;border-radius:3px}.tl-key{display:flex}
+      .pat-row,.pat-head{grid-template-columns:60px repeat(16,1fr)}.pat-name{font-size:.62rem}.cell{height:14px}.pat-head span{font-size:.54rem}
+      .pat-mobile{display:grid}.pat.desktop-only{display:none!important}
+      .ruler-track{font-size:.75rem}.ruler-track span:nth-child(2),.ruler-track span:nth-child(4),.ruler-track span:nth-child(6),.ruler-track span:nth-child(7){display:none}
+      .tl-name,.tl-key span,.pat-legend,.profile-axis{font-size:.75rem}
+      .range-row{grid-template-columns:1fr;gap:3px}.range-label{text-align:left}.range-track{height:31px}
+      .freq-axis-track span{display:none;font-size:.75rem}.freq-axis-track span:first-child,.freq-axis-track span:nth-child(4),.freq-axis-track span:last-child{display:block}
+      .range-notes,.parameter-cards{grid-template-columns:1fr}
+      .meter-tag{display:none}.meter-track{height:38px}.meter-axis{font-size:.75rem}.meter-key{display:grid;gap:6px}
+      .plot-shell{padding:4px}.plot-shell svg{aspect-ratio:2/1}
+      .stereo{grid-template-columns:1fr}.stereo-field{height:330px}.stereo-axis-y,.stereo-axis-x{font-size:.75rem}
+      .transition-phase{border-left:4px solid var(--phase-color);padding:10px 12px;background:var(--panel2);border-radius:0 8px 8px 0}
+      .transition-phase strong{display:block;color:#fff}.transition-phase span{color:var(--muted);font-size:.8rem}
+      .calc-shell{padding:14px}.tempo-console{grid-template-columns:1fr}.beat-anchor{grid-template-columns:1fr;grid-template-areas:"label" "value" "bar";gap:7px}.beat-anchor strong{font-size:2rem}
+      .reverb-grid{grid-template-columns:1fr}.calc-section-title{display:block}.calc-section-title span{display:block;text-align:left;margin-top:3px}
+      .source-head{display:none}.source-row{grid-template-columns:1fr;padding:8px;gap:4px}.source-row>div{border:0!important;padding:6px 8px!important;background:transparent!important}.source-row>div:first-child{border-bottom:1px solid var(--line)!important;font-size:.86rem}.source-label{display:inline-block;min-width:74px;margin-right:7px;color:var(--accent2);font:800 .66rem/1 ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase}
+      .delay-head{display:none}.delay-row{grid-template-columns:repeat(3,minmax(0,1fr));padding:9px;gap:6px}.delay-row>div{border:0;padding:7px}
+      .delay-note{grid-column:1/-1;border-radius:6px}.delay-value-cell{display:block;border:1px solid var(--line)!important;border-radius:6px;background:#0d1420;text-align:center}
+      .delay-value-cell strong,.delay-value-cell>span{display:block}.delay-kind{display:block!important;margin-bottom:5px;color:var(--accent2)!important;font:800 .66rem/1 ui-monospace,Menlo,Consolas,monospace!important;text-transform:uppercase}
+      .calc-formula{grid-template-columns:1fr 1fr}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{
+      :root{--bg:#fff;--panel:#fff;--panel2:#f3f5f7;--text:#111;--muted:#4b5563;--line:#cbd5e1;--code:#eef2f7}
+      body{background:#fff;color:#111;font-size:10pt}
+      aside,.skip-link{display:none}
+      .layout{display:block}.hero,.card,.element,.fig,.calc-shell,table{box-shadow:none;break-inside:avoid}
+      main{width:100%;padding:0}.hero{margin-bottom:18px}.hero h1{font-size:24pt}h2{margin-top:28px}
+      code,.chain{color:#123f36}.node{color:#16395f;background:#f3f6fa}.footer{color:#374151}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <div class="brand-title">Electronic Music Guide</div>
+        <p>Arrangement â†’ Mix engineering<br>House Â· Tech House Â· Deep House Â· Techno Â· Electro</p>
+      </div>
+      <nav aria-label="Indice della guida">
+        <div class="nav-label">A Â· Arrangement</div>
+        <a href="#arr-logica">A1 Â· Logica e fraseggio</a>
+        <a href="#arr-mappa">A2 Â· Mappa del brano</a>
+        <a href="#arr-generi">A3 Â· Differenze per genere</a>
+        <a href="#arr-sezioni">A4 Â· Sezioni nel dettaglio</a>
+        <a href="#arr-loop">A5 Â· Dal loop alla traccia</a>
+        <a href="#arr-transizioni">A6 Â· Transizioni</a>
+        <a href="#arr-energia">A7 Â· Gestione energia</a>
+        <a href="#arr-errori">A8 Â· Errori tipici</a>
+        <a href="#arr-checklist">A9 Â· Checklist arrangement</a>
+        <div class="nav-label mix">B Â· Mix engineering</div>
+        <a href="#principi">B1 Â· Gain staging</a>
+        <a href="#mix-mappa">B2 Â· Mappa frequenze</a>
+        <a href="#kick">B3 Â· Kick</a>
+        <a href="#rumble">B4 Â· Rumble kick</a>
+        <a href="#clap">B5 Â· Clap / Snare</a>
+        <a href="#hihat">B6 Â· Hi-hat</a>
+        <a href="#perc">B7 Â· Percussioni / Toms</a>
+        <a href="#bass">B8 Â· Bassline</a>
+        <a href="#lead">B9 Â· Lead / Stab</a>
+        <a href="#pad">B10 Â· Pad</a>
+        <a href="#voci">B11 Â· Voci / Vocal chop</a>
+        <a href="#fx">B12 Â· FX</a>
+        <a href="#drumbus">B13 Â· Drum bus</a>
+        <a href="#masterbus">B14 Â· Master bus mix</a>
+        <a href="#decisioni">B15 Â· Diagnosi del suono</a>
+        <a href="#spatial-fx-guide">B16 Â· Riverberi &amp; delay</a>
+        <a href="#tempo-calculator">B17 Â· Delay &amp; Reverb tool</a>
+        <a href="#mix-checklist">B18 Â· Checklist mix</a>
+      </nav>
+    </aside>
+
+    <main id="contenuto">
+      <header class="hero">
+        <div class="eyebrow">Manuale operativo Â· Dallâ€™idea al premaster</div>
+        <h1>Arrangement e mix per musica elettronica</h1>
+        <p class="lead">Una guida unica per trasformare un loop in un brano leggibile e poi farlo tradurre su club system, cuffie e impianti piccoli. Prima costruisci fraseggio, contrasto ed energia; dopo assegni spazio, dinamica e profonditÃ  a ogni elemento.</p>
+        <div class="hero-meta" aria-label="Ambito della guida">
+          <span>House / Techno</span><span>Live 12 stock</span><span>Range, non ricette</span>
+        </div>
+        <div class="phase-map" aria-label="Percorso della guida">
+          <a class="phase-link" href="#arrangement">
+            <strong>A Â· Arrangement</strong>
+            <span>Frasi, sezioni, transizioni e curva di energia</span>
+          </a>
+          <div class="phase-arrow" aria-hidden="true">â†’</div>
+          <a class="phase-link mix" href="#mix-engineering">
+            <strong>B Â· Mix engineering</strong>
+            <span>Gain staging, frequenze, dinamica e stereo</span>
+          </a>
+        </div>
+      </header>
+
+      <header class="chapter" id="arrangement">
+        <div class="chapter-kicker">Fase A Â· Costruisci il brano</div>
+        <h2>Arrangement</h2>
+        <p>Organizza il materiale in frasi riconoscibili e crea contrasto prima di cercare energia con il processing.</p>
+      </header>
+
+      <section id="arr-logica">
+        <h2>La logica dellâ€™arrangement</h2>
+        <p>Tre principi governano il resto. Primo: <strong>pensa per frasi</strong> â€” nella club music i cambi strutturali cadono spesso ogni 8, 16 o 32 bar, mentre le micro-variazioni possono vivere anche ogni 2 o 4. Secondo: <strong>considera il contesto DJ</strong> â€” intro e outro devono offrire punti di ingresso e uscita leggibili. Terzo: <strong>fai percepire una causa</strong> â€” un elemento entra, esce o cambia perchÃ© la frase precedente ha preparato quel contrasto.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Tempo e durata: orientamento</h3>
+            <ul>
+              <li><strong>House / Tech House:</strong> spesso 122-128 BPM; extended mix circa 5:30-7:00.</li>
+              <li><strong>Deep House:</strong> spesso 118-125 BPM; evoluzione piÃ¹ graduale, ma non necessariamente piÃ¹ lunga.</li>
+              <li><strong>Techno:</strong> circa 125-150+ BPM secondo sottogenere; struttura spesso piÃ¹ ipnotica e meno centrata sul drop.</li>
+              <li><strong>Edit breve:</strong> 2:30-4:00 circa. PuÃ² essere una versione dedicata o un montaggio piÃ¹ compatto dellâ€™extended.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Le funzioni fondamentali</h3>
+            <ul>
+              <li><strong>Intro:</strong> stabilisce tempo, groove e materiale mixabile.</li>
+              <li><strong>Sviluppo / build:</strong> aumenta aspettativa o prepara una sottrazione.</li>
+              <li><strong>Sezione principale:</strong> consegna groove, hook o idea centrale.</li>
+              <li><strong>Break:</strong> cambia densitÃ  e prospettiva; non deve per forza azzerare il ritmo.</li>
+              <li><strong>Outro:</strong> riduce lâ€™identitÃ  melodica e rende chiara lâ€™uscita.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>Test del DJ:</strong> ascolta 16-32 bar di intro e outro insieme a una reference. Se kick, basso e hook delle due tracce si ostacolano subito, semplifica oppure crea una versione extended dedicata.
+        </div>
+      </section>
+
+      <section id="arr-mappa">
+        <h2>Mappa completa del brano</h2>
+        <p>Esempio didattico per una traccia house/tech house extended di <strong>208 bar a 124 BPM</strong>, circa <strong>6:43</strong>. Non Ã¨ un template obbligatorio: serve a visualizzare funzioni, ingressi e curva di energia prima di adattarli alle reference del sottogenere.</p>
+
+        <div class="fig">
+          <div class="fig-title">Timeline strutturale â€” 208 bar @ 124 BPM</div>
+          <div class="ruler"><div></div>
+            <div class="ruler-track" aria-label="Scala temporale proporzionale da 1 a 208 bar"><span style="left:0%">1</span><span style="left:15.4%">32</span><span style="left:30.8%">64</span><span style="left:46.2%">96</span><span style="left:61.5%">128</span><span style="left:76.9%">160</span><span style="left:92.3%">192</span><span style="left:100%">208</span></div>
+          </div>
+
+          <div class="tl-head"><div></div>
+            <div class="tl-secs">
+              <div class="tl-sec intro" style="left:0%;width:15.4%">Intro 32</div>
+              <div class="tl-sec build" style="left:15.4%;width:7.7%">B1</div>
+              <div class="tl-sec drop" style="left:23.1%;width:15.4%">Main 1 Â· 32</div>
+              <div class="tl-sec break" style="left:38.5%;width:11.5%">Break Â· 24</div>
+              <div class="tl-sec build" style="left:50%;width:3.8%">B2</div>
+              <div class="tl-sec drop" style="left:53.8%;width:23.1%">Main 2 Â· 48</div>
+              <div class="tl-sec break" style="left:76.9%;width:3.8%">Brk</div>
+              <div class="tl-sec drop" style="left:80.7%;width:7.7%">M3</div>
+              <div class="tl-sec outro" style="left:88.4%;width:11.6%">Outro 24</div>
+            </div>
+          </div>
+          <div class="tl-key" aria-label="Legenda sezioni timeline">
+            <span class="intro">Intro 32</span><span class="build">Build 1 Â· 16</span><span class="drop">Main 1 Â· 32</span><span class="break">Break Â· 24</span><span class="build">Build 2 Â· 8</span><span class="drop">Main 2 Â· 48</span><span class="break">Break Â· 8</span><span class="drop">Main 3 Â· 16</span><span class="outro">Outro Â· 24</span>
+          </div>
+
+          <div class="tl">
+            <div class="tl-row"><div class="tl-name">Kick</div><div class="tl-lane">
+              <div class="tl-block b-kick" style="left:0%;width:38.5%"></div>
+              <div class="tl-block b-kick" style="left:50%;width:26.9%"></div>
+              <div class="tl-block b-kick" style="left:80.7%;width:19.3%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">Sub / Bass</div><div class="tl-lane">
+              <div class="tl-block b-sub" style="left:15.4%;width:23.1%"></div>
+              <div class="tl-block b-sub" style="left:50%;width:26.9%"></div>
+              <div class="tl-block b-sub" style="left:80.7%;width:7.7%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">Clap / Snare</div><div class="tl-lane">
+              <div class="tl-block b-clap ghost" style="left:11.5%;width:3.9%"></div>
+              <div class="tl-block b-clap" style="left:15.4%;width:23.1%"></div>
+              <div class="tl-block b-clap" style="left:50%;width:38.4%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">Hats / Perc</div><div class="tl-lane">
+              <div class="tl-block b-hat" style="left:0%;width:38.5%"></div>
+              <div class="tl-block b-hat ghost" style="left:38.5%;width:11.5%"></div>
+              <div class="tl-block b-hat" style="left:50%;width:50%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">Lead / Hook</div><div class="tl-lane">
+              <div class="tl-block b-lead" style="left:23.1%;width:15.4%"></div>
+              <div class="tl-block b-lead ghost" style="left:38.5%;width:11.5%"></div>
+              <div class="tl-block b-lead" style="left:53.8%;width:23.1%"></div>
+              <div class="tl-block b-lead" style="left:80.7%;width:7.7%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">Pad / Atmo</div><div class="tl-lane">
+              <div class="tl-block b-pad ghost" style="left:7.7%;width:15.4%"></div>
+              <div class="tl-block b-pad" style="left:38.5%;width:15.3%"></div>
+              <div class="tl-block b-pad ghost" style="left:53.8%;width:7.7%"></div>
+              <div class="tl-block b-pad" style="left:76.9%;width:3.8%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">Vocal</div><div class="tl-lane">
+              <div class="tl-block b-vox ghost" style="left:30.8%;width:7.7%"></div>
+              <div class="tl-block b-vox" style="left:38.5%;width:15.3%"></div>
+              <div class="tl-block b-vox" style="left:53.8%;width:23.1%"></div>
+            </div></div>
+            <div class="tl-row"><div class="tl-name">FX / Riser</div><div class="tl-lane">
+              <div class="tl-block b-fx" style="left:15.4%;width:7.7%"></div>
+              <div class="tl-block b-fx" style="left:42.3%;width:11.5%"></div>
+              <div class="tl-block b-fx" style="left:76.9%;width:3.8%"></div>
+            </div></div>
+          </div>
+          <p class="fig-cap">Blocchi pieni = ruolo protagonista; blocchi trasparenti = presenza filtrata o secondaria. La timeline mostra una possibilitÃ  coerente, non una prescrizione.</p>
+        </div>
+
+        <div class="fig">
+          <div class="fig-title">Curva di energia â€” leggi il contrasto, non il volume</div>
+          <div class="desktop-only" role="img" aria-label="Livelli energetici allineati alle nove sezioni della timeline di 208 bar">
+            <div class="energy-steps">
+              <div class="energy-step" style="--level:34%">Intro<br>32</div><div class="energy-step" style="--level:62%">Build 1<br>16</div>
+              <div class="energy-step" style="--level:78%">Main 1<br>32</div><div class="energy-step" style="--level:30%">Break<br>24</div>
+              <div class="energy-step" style="--level:70%">B2<br>8</div><div class="energy-step" style="--level:100%">Main 2<br>48</div>
+              <div class="energy-step" style="--level:42%">Brk<br>8</div><div class="energy-step" style="--level:82%">M3<br>16</div>
+              <div class="energy-step" style="--level:26%">Outro<br>24</div>
+            </div>
+          </div>
+          <div class="energy-mobile mobile-only" role="img" aria-label="Sequenza dei livelli energetici per sezione">
+            <div class="transition-phase" style="--phase-color:#58d6b4"><strong>Intro Â· 32 bar â€” bassa</strong><span>Stabilisci groove e spazio per il mix.</span></div>
+            <div class="transition-phase" style="--phase-color:#ffbf69"><strong>Build 1 Â· 16 â€” crescita</strong><span>Aumenta tensione senza alzare solo il volume.</span></div>
+            <div class="transition-phase" style="--phase-color:#69a9ff"><strong>Main 1 Â· 32 â€” alta</strong><span>Prima consegna completa del groove.</span></div>
+            <div class="transition-phase" style="--phase-color:#b48cff"><strong>Break Â· 24 â€” valle</strong><span>La sottrazione prepara il ritorno.</span></div>
+            <div class="transition-phase" style="--phase-color:#ffbf69"><strong>Build 2 Â· 8 â€” rapida</strong><span>Rampa breve verso il picco.</span></div>
+            <div class="transition-phase" style="--phase-color:#69a9ff"><strong>Main 2 Â· 48 â€” picco</strong><span>Massima energia percepita, non necessariamente loudness.</span></div>
+            <div class="transition-phase" style="--phase-color:#b48cff"><strong>Break 8 â†’ Main 3 Â· 16</strong><span>Valle breve e ultimo ritorno.</span></div>
+            <div class="transition-phase" style="--phase-color:#58d6b4"><strong>Outro Â· 24 â€” decrescita</strong><span>Riduci identitÃ  e densitÃ .</span></div>
+          </div>
+          <p class="fig-cap">Nella house il secondo main puÃ² rappresentare il picco, ma non deve essere semplicemente â€œtutto piÃ¹ forteâ€. In techno la curva puÃ² crescere in modo continuo; nella deep house puÃ² restare piÃ¹ morbida.</p>
+        </div>
+      </section>
+
+      <section id="arr-generi">
+        <h2>Differenze per genere</h2>
+        <p>La grammatica Ã¨ condivisa, ma cambia il modo in cui viene percepito il contrasto. Usa la colonna del tuo sottogenere come ipotesi da verificare su 3-4 reference recenti.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Aspetto</th><th>House / Tech House</th><th>Deep House</th><th>Techno</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Intro</strong></td><td>16-32 bar; beat chiaro, hook spesso trattenuto.</td><td>24-48 bar; atmosfera presente e groove morbido.</td><td>32-64 bar; entrata graduale di texture e layer ritmici.</td></tr>
+              <tr><td><strong>Sezione principale</strong></td><td>Cambio leggibile di bassline, hook o densitÃ .</td><td>Arricchimento progressivo piÃ¹ che â€œesplosioneâ€.</td><td>PuÃ² essere evoluzione continua senza un drop esplicito.</td></tr>
+              <tr><td><strong>Break</strong></td><td>8-32 bar; vocal o melodia possono diventare protagoniste.</td><td>16-32 bar; chords e atmosfera, spesso con pulsazione residua.</td><td>Breve, decostruito o assente; lâ€™energia puÃ² calare per filtraggio.</td></tr>
+              <tr><td><strong>Hook</strong></td><td>Bassline, vocal chop, stab o riff ritmico.</td><td>Chords, keys, vocal e timbro armonico.</td><td>Sequenza, texture o modulazione che evolve lentamente.</td></tr>
+              <tr><td><strong>Dinamica</strong></td><td>Contrasti spesso evidenti e leggibili sul downbeat.</td><td>Curve morbide e variazioni distribuite.</td><td>Accumulo, sottrazione e automazione su archi piÃ¹ lunghi.</td></tr>
+              <tr><td><strong>Outro</strong></td><td>16-32 bar progressivamente piÃ¹ neutre.</td><td>24-48 bar; armonia che si dissolve prima del groove.</td><td>32-64 bar; sottrazione lenta di layer e modulazioni.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fig">
+          <div class="fig-title">Tre profili di energia possibili</div>
+          <div class="genre-profiles" role="img" aria-label="Tre piccoli grafici separati con la stessa scala energetica">
+            <div class="genre-profile" style="--profile-color:#58d6b4"><h3>House / Tech House</h3><p>Contrasti leggibili</p><div class="profile-bars"><span style="--h:28%"></span><span style="--h:48%"></span><span style="--h:78%"></span><span style="--h:34%"></span><span style="--h:60%"></span><span style="--h:95%"></span><span style="--h:45%"></span><span style="--h:82%"></span><span style="--h:26%"></span></div><div class="profile-axis"><span>inizio</span><span>tempo â†’</span></div></div>
+            <div class="genre-profile" style="--profile-color:#69a9ff"><h3>Deep House</h3><p>Onde piÃ¹ morbide</p><div class="profile-bars"><span style="--h:30%"></span><span style="--h:42%"></span><span style="--h:64%"></span><span style="--h:48%"></span><span style="--h:58%"></span><span style="--h:78%"></span><span style="--h:60%"></span><span style="--h:72%"></span><span style="--h:32%"></span></div><div class="profile-axis"><span>inizio</span><span>tempo â†’</span></div></div>
+            <div class="genre-profile" style="--profile-color:#ffbf69"><h3>Techno</h3><p>Arco lungo e modulato</p><div class="profile-bars"><span style="--h:24%"></span><span style="--h:32%"></span><span style="--h:43%"></span><span style="--h:54%"></span><span style="--h:65%"></span><span style="--h:76%"></span><span style="--h:88%"></span><span style="--h:82%"></span><span style="--h:28%"></span></div><div class="profile-axis"><span>inizio</span><span>tempo â†’</span></div></div>
+          </div>
+          <p class="fig-cap">Sono profili, non identitÃ  rigide: una traccia puÃ² combinare contrasti house e sviluppo techno senza essere incoerente.</p>
+        </div>
+      </section>
+
+      <section id="arr-sezioni">
+        <h2>Ogni sezione nel dettaglio</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Intro (16-64 bar)</h3>
+            <ul>
+              <li>Stabilisci tempo e groove con pochi elementi riconoscibili.</li>
+              <li>Anticipa lâ€™identitÃ  con un frammento filtrato, non necessariamente con lâ€™hook completo.</li>
+              <li>Il basso puÃ² entrare presto, ma evita che il low-end renda impossibile la sovrapposizione con unâ€™altra traccia.</li>
+              <li>Nellâ€™ultima frase introduci un segnale di direzione: clap, fill, automazione o sottrazione.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Sviluppo / Build (8-16 bar)</h3>
+            <ul>
+              <li>Aumenta una o due leve: attivitÃ  ritmica, spettro, registro o densitÃ .</li>
+              <li>Puoi togliere kick o sub nelle ultime battute, ma non Ã¨ obbligatorio.</li>
+              <li>Un pickup o un frammento vocal prima del downbeat puÃ² funzionare se il rientro resta leggibile.</li>
+              <li>Evita di creare tensione soltanto alzando il volume.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Sezione principale (16-64 bar)</h3>
+            <ul>
+              <li>Nella prima frase consegna con chiarezza groove e idea principale.</li>
+              <li>Distribuisci layer e variazioni: non serve mostrare tutto nei primi otto bar.</li>
+              <li>Ogni 4-16 bar crea una micro-variazione proporzionata al genere.</li>
+              <li>Una seconda sezione principale deve cambiare funzione, registro o contrasto; non deve per forza essere piÃ¹ piena.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Break (8-32 bar)</h3>
+            <ul>
+              <li>Cambia prospettiva riducendo densitÃ , basse o attivitÃ  ritmica.</li>
+              <li>Puoi togliere il kick oppure conservarne una versione filtrata o rarefatta.</li>
+              <li>Mantieni un riferimento temporale quando il dancefloor deve continuare a percepire la frase.</li>
+              <li>La parte finale puÃ² giÃ  preparare il ritorno con automazioni e pickup.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Secondo main / variazione</h3>
+            <ul>
+              <li>Rivela un elemento trattenuto, modifica il hook o cambia la relazione tra i layer.</li>
+              <li>Alterna pieni e sottrazioni brevi per evitare un blocco statico.</li>
+              <li>Una ripresa finale puÃ² essere volutamente ridotta e piÃ¹ funzionale allâ€™outro.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Outro (16-64 bar)</h3>
+            <ul>
+              <li>Riduci per primi gli elementi piÃ¹ identificativi: vocal, hook e armonia.</li>
+              <li>Conserva punti di frase chiari e un groove utilizzabile dal DJ.</li>
+              <li>Non introdurre idee che richiedono un nuovo sviluppo.</li>
+              <li>Per una versione extended, preferisci una chiusura strutturale al fade del master.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="warning"><strong>Sottrazione mirata:</strong> togliere il basso per mezzo bar o una battuta puÃ² riattivare un groove lungo, ma usalo come accento intenzionale: ripetuto sempre nello stesso modo diventa prevedibile.</div>
+      </section>
+
+      <section id="arr-loop">
+        <h2>Dal loop alla traccia</h2>
+        <p>Un metodo affidabile consiste nel costruire una versione completa del groove e ricavarne le sezioni per sottrazione. Non Ã¨ lâ€™unico workflow: puoi anche sviluppare il brano cronologicamente o partire da una reference map. La condizione Ã¨ che ogni sezione abbia una funzione riconoscibile.</p>
+
+        <div class="fig">
+          <div class="fig-title">Pattern ritmico â€” una singola barra in sedicesimi</div>
+          <div class="pat desktop-only">
+            <div class="pat-head" aria-hidden="true"><span></span><span>1</span><span>e</span><span>&amp;</span><span>a</span><span>2</span><span>e</span><span>&amp;</span><span>a</span><span>3</span><span>e</span><span>&amp;</span><span>a</span><span>4</span><span>e</span><span>&amp;</span><span>a</span></div>
+            <div class="pat-row"><div class="pat-name">Kick</div>
+              <div class="cell on b-kick"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell on b-kick"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell on b-kick"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell on b-kick"></div><div class="cell"></div><div class="cell"></div><div class="cell half b-kick"></div>
+            </div>
+            <div class="pat-row"><div class="pat-name">Clap</div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell on b-clap"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell on b-clap"></div><div class="cell"></div><div class="cell half b-clap"></div><div class="cell half b-clap"></div>
+            </div>
+            <div class="pat-row"><div class="pat-name">Closed hat</div>
+              <div class="cell"></div><div class="cell"></div><div class="cell half b-hat"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell half b-hat"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell half b-hat"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell half b-hat"></div><div class="cell half b-hat"></div>
+            </div>
+            <div class="pat-row"><div class="pat-name">Open hat</div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on b-hat"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on b-hat"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on b-hat"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on b-hat"></div>
+            </div>
+            <div class="pat-row"><div class="pat-name">Bass</div>
+              <div class="cell"></div><div class="cell on b-sub"></div><div class="cell on b-sub"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell on b-sub"></div><div class="cell half b-sub"></div><div class="cell on b-sub"></div>
+              <div class="cell"></div><div class="cell on b-sub"></div><div class="cell on b-sub"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell on b-sub"></div><div class="cell half b-sub"></div><div class="cell on b-sub"></div>
+            </div>
+            <div class="pat-row"><div class="pat-name">Stab / Lead</div>
+              <div class="cell"></div><div class="cell"></div><div class="cell on b-lead"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell on b-lead"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell on b-lead"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell on b-lead"></div><div class="cell"></div><div class="cell on b-lead"></div><div class="cell on b-lead"></div>
+            </div>
+          </div>
+          <div class="pat-mobile" aria-label="Pattern mobile diviso in quattro beat; ogni beat mostra 1 e & a">
+            <div class="pat-mobile-row" style="--hit-color:#58d6b4"><strong>Kick</strong><div class="pat-mobile-beats">
+              <div><div class="beat-head"><span>1</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i></i><i></i></div></div><div><div class="beat-head"><span>2</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i></i><i></i></div></div><div><div class="beat-head"><span>3</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i></i><i></i></div></div><div><div class="beat-head"><span>4</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i></i><i class="ghost"></i></div></div>
+            </div></div>
+            <div class="pat-mobile-row" style="--hit-color:#ff9f6e"><strong>Clap</strong><div class="pat-mobile-beats">
+              <div><div class="beat-head"><span>1</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i></i><i></i></div></div><div><div class="beat-head"><span>2</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i></i><i></i></div></div><div><div class="beat-head"><span>3</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i></i><i></i></div></div><div><div class="beat-head"><span>4</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i class="ghost"></i><i class="ghost"></i></div></div>
+            </div></div>
+            <div class="pat-mobile-row" style="--hit-color:#ffd166"><strong>Closed hat</strong><div class="pat-mobile-beats">
+              <div><div class="beat-head"><span>1</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i class="ghost"></i><i></i></div></div><div><div class="beat-head"><span>2</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i class="ghost"></i><i></i></div></div><div><div class="beat-head"><span>3</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i class="ghost"></i><i></i></div></div><div><div class="beat-head"><span>4</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i class="ghost"></i><i class="ghost"></i></div></div>
+            </div></div>
+            <div class="pat-mobile-row" style="--hit-color:#ffd166"><strong>Open hat</strong><div class="pat-mobile-beats">
+              <div><div class="beat-head"><span>1</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i></i><i class="hit"></i></div></div><div><div class="beat-head"><span>2</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i></i><i class="hit"></i></div></div><div><div class="beat-head"><span>3</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i></i><i class="hit"></i></div></div><div><div class="beat-head"><span>4</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i></i><i class="hit"></i></div></div>
+            </div></div>
+            <div class="pat-mobile-row" style="--hit-color:#69a9ff"><strong>Bass</strong><div class="pat-mobile-beats">
+              <div><div class="beat-head"><span>1</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i class="hit"></i><i class="hit"></i><i></i></div></div><div><div class="beat-head"><span>2</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i class="hit"></i><i class="ghost"></i><i class="hit"></i></div></div><div><div class="beat-head"><span>3</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i class="hit"></i><i class="hit"></i><i></i></div></div><div><div class="beat-head"><span>4</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i class="hit"></i><i class="ghost"></i><i class="hit"></i></div></div>
+            </div></div>
+            <div class="pat-mobile-row" style="--hit-color:#7ee0ff"><strong>Stab / Lead</strong><div class="pat-mobile-beats">
+              <div><div class="beat-head"><span>1</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i class="hit"></i><i></i></div></div><div><div class="beat-head"><span>2</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i></i><i class="hit"></i><i></i></div></div><div><div class="beat-head"><span>3</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i></i><i class="hit"></i><i></i><i></i></div></div><div><div class="beat-head"><span>4</span><span>e</span><span>&amp;</span><span>a</span></div><div class="beat-cells"><i class="hit"></i><i></i><i class="hit"></i><i class="hit"></i></div></div>
+            </div></div>
+          </div>
+          <div class="pat-key" aria-label="Legenda del pattern"><span class="key-item"><i class="dot" style="background:#58d6b4"></i>Colpo principale</span><span class="key-item"><i class="dot" style="background:#58d6b4;opacity:.55"></i>Ghost note</span><span class="key-item"><i class="dot" style="background:#69a9ff;opacity:.55;border:1px dashed #fff"></i>Pickup verso lo step seguente</span></div>
+          <p class="pat-legend">Il disegno mostra <strong>una sola barra</strong>; la frase nasce ripetendo il nucleo e modificando con intenzione le battute 4, 8 o 16. Kick e basso possono alternarsi oppure sovrapporsi: envelope, durata delle note e sidechain determinano se convivono bene.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Workflow per sottrazione</h3>
+            <ol>
+              <li>Costruisci 8-16 bar con tutti i ruoli necessari.</li>
+              <li>Duplica una struttura provvisoria di circa 192-224 bar.</li>
+              <li>Definisci intro, sezioni principali, break e outro rimuovendo i ruoli non necessari.</li>
+              <li>Disegna prima la macro-curva; aggiungi fill e FX solo dopo.</li>
+              <li>Accorcia o allunga confrontando la tensione con le reference.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Variazioni con una funzione</h3>
+            <ul>
+              <li><strong>Segnala:</strong> fill, reverse o pickup prima del confine di frase.</li>
+              <li><strong>Rinnova:</strong> modifica lâ€™ultima battuta ogni 8-16 bar.</li>
+              <li><strong>Muovi:</strong> automazione lenta di filtro, inviluppo o send.</li>
+              <li><strong>Contrasta:</strong> alterna pattern A/B o pieno/vuoto.</li>
+              <li><strong>Rivela:</strong> conserva almeno una variazione significativa per la seconda metÃ .</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="arr-transizioni">
+        <h2>Transizioni e tensione</h2>
+        <p>Una transizione leggibile combina spesso tre funzioni: qualcosa che <strong>cresce</strong>, qualcosa che <strong>si riduce</strong> e un <strong>marcatore</strong> sul punto di arrivo. Non servono tutte ogni volta: scegli il minimo contrasto che rende chiaro il cambio.</p>
+
+        <div class="anat">
+          <div><strong>Riser</strong>4-16 bar. La parte ascendente atterra sul downbeat; la coda puÃ² proseguire se non copre kick e hook.</div>
+          <div><strong>Roll</strong>Aumenta lâ€™attivitÃ  ritmica nelle ultime 1-4 bar. Non deve necessariamente arrivare a 1/32.</div>
+          <div><strong>Drum fill</strong>Segna il confine di frase senza obbligare il groove a fermarsi.</div>
+          <div><strong>Filter sweep</strong>Cambia lâ€™ampiezza spettrale di una parte; automatizzare il gruppo intero richiede cautela.</div>
+          <div><strong>Sottrazione</strong>Mezza barra, una battuta o unâ€™intera frase piÃ¹ vuota: il contrasto crea lâ€™impatto.</div>
+          <div><strong>Impact / Crash</strong>Marca la â€œ1â€ con una coda controllata e low-end compatibile con il kick.</div>
+        </div>
+
+        <div class="fig">
+          <div class="fig-title">Anatomia di 16 bar â€” corsie proporzionali e downbeat</div>
+          <div class="transition-lanes desktop-only" role="img" aria-label="Diagramma a corsie di una build di 16 bar seguita dal downbeat">
+            <div class="transition-ruler"><div></div><div class="transition-track"><span style="left:0%">1</span><span style="left:25%">5</span><span style="left:50%">9</span><span style="left:75%">13</span><span style="left:100%">17 Â· downbeat</span></div></div>
+            <div class="transition-row"><div class="transition-label">Automazione</div><div class="transition-track"><div class="transition-segment" style="left:0;width:100%;color:#b48cff;clip-path:polygon(0 78%,100% 0,100% 100%,0 100%)"></div><i class="transition-downbeat"></i></div></div>
+            <div class="transition-row"><div class="transition-label">Groove</div><div class="transition-track"><div class="transition-segment" style="left:0;width:87.5%;color:#58d6b4"></div><div class="transition-segment" style="left:87.5%;width:12.5%;color:#58d6b4;opacity:.28"></div><i class="transition-downbeat"></i></div></div>
+            <div class="transition-row"><div class="transition-label">Roll / attivitÃ </div><div class="transition-track"><div class="transition-segment" style="left:50%;width:25%;color:#ff9f6e;opacity:.55"></div><div class="transition-segment" style="left:75%;width:25%;color:#ff9f6e"></div><i class="transition-downbeat"></i></div></div>
+            <div class="transition-row"><div class="transition-label">Sottrazione</div><div class="transition-track"><div class="transition-segment" style="left:87.5%;width:12.5%;color:#ff7b7b"></div><i class="transition-downbeat"></i></div></div>
+            <div class="transition-row"><div class="transition-label">Rientro</div><div class="transition-track"><div class="transition-segment" style="left:99.2%;width:.8%;color:#ffbf69"></div><i class="transition-downbeat"></i></div></div>
+          </div>
+          <div class="transition-mobile mobile-only" role="img" aria-label="Quattro fasi verticali della transizione">
+            <div class="transition-phase" style="--phase-color:#b48cff"><strong>1 Â· Preparazione â€” bar 1-8</strong><span>Automazione lenta; il groove resta leggibile.</span></div>
+            <div class="transition-phase" style="--phase-color:#ff9f6e"><strong>2 Â· Accelerazione â€” bar 9-14</strong><span>Roll e attivitÃ  ritmica aumentano con intenzione.</span></div>
+            <div class="transition-phase" style="--phase-color:#ff7b7b"><strong>3 Â· Pickup/sottrazione â€” bar 15-16</strong><span>Riduci il groove o crea un anticipo che indichi lâ€™arrivo.</span></div>
+            <div class="transition-phase" style="--phase-color:#ffbf69"><strong>4 Â· Downbeat â€” bar 17</strong><span>Kick, basso e hook rientrano su un punto inequivocabile.</span></div>
+          </div>
+        </div>
+        <div class="note"><strong>Allineamento:</strong> il punto strutturale deve essere percepibile sul downbeat. Pickup, vocal e bass anticipati sono validi quando preparano quel punto; diventano un problema solo se rendono ambiguo lâ€™inizio della nuova frase.</div>
+      </section>
+
+      <section id="arr-energia">
+        <h2>Gestione dellâ€™energia</h2>
+        <p>Lâ€™energia percepita non coincide con il volume. Costruiscila muovendo leve diverse e ascoltando quale relazione cambia davvero.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Leva</th><th>Cosa controlla</th><th>Uso pratico</th></tr></thead>
+            <tbody>
+              <tr><td><strong>DensitÃ </strong></td><td>Quanti ruoli suonano insieme</td><td>Aggiungi o togli un protagonista; piÃ¹ cambi coordinati sono ammessi nei confini importanti.</td></tr>
+              <tr><td><strong>Ampiezza spettrale</strong></td><td>Quanto spettro viene occupato</td><td>Confronta versioni filtrate e complete di lead, pad, drums o FX.</td></tr>
+              <tr><td><strong>AttivitÃ  ritmica</strong></td><td>Numero e distribuzione degli eventi</td><td>Varia hats, sincopi, ghost note e code senza alzare il livello.</td></tr>
+              <tr><td><strong>Registro</strong></td><td>Altezza e ottava delle parti</td><td>Sposta un hook solo se resta nel registro utile; abbassare il basso non garantisce piÃ¹ peso.</td></tr>
+              <tr><td><strong>ProfonditÃ </strong></td><td>Rapporto dry/wet e distanza percepita</td><td>Porta avanti il main riducendo code oppure allontana il break aumentando lo spazio.</td></tr>
+              <tr><td><strong>NovitÃ </strong></td><td>Quanto materiale nuovo viene rivelato</td><td>Conserva una variazione riconoscibile per la seconda metÃ , senza accumulare layer inutili.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>Trucco del contrasto:</strong> per far percepire grande un ritorno, rendi piÃ¹ piccola la frase precedente. Se il main richiede +3 dB per sembrare diverso, probabilmente manca contrasto nellâ€™arrangement.</div>
+      </section>
+
+      <section id="arr-errori">
+        <h2>Errori tipici di arrangement</h2>
+        <div class="grid">
+          <div class="card"><h3>Loop senza direzione</h3><p>Gli elementi entrano ed escono senza una funzione. <strong>Correzione:</strong> assegna a ogni sezione un ruolo e disegna prima la macro-curva.</p></div>
+          <div class="card"><h3>Tutto troppo presto</h3><p>Il materiale completo arriva nella prima parte e non resta evoluzione. <strong>Correzione:</strong> trattieni una variazione, non necessariamente un altro layer.</p></div>
+          <div class="card"><h3>Break disorientante</h3><p>Spariscono groove e riferimento temporale piÃ¹ a lungo di quanto il genere sostenga. <strong>Correzione:</strong> conserva una pulsazione o accorcia la zona sospesa.</p></div>
+          <div class="card"><h3>Intro/outro non mixabili</h3><p>Hook, vocal e sub pieno competono subito con la traccia vicina. <strong>Correzione:</strong> testa una sovrapposizione reale e semplifica i ruoli concorrenti.</p></div>
+          <div class="card"><h3>Cambi senza fraseggio</h3><p>I confini sembrano casuali. <strong>Correzione:</strong> allinea le macro-sezioni alle frasi; usa gli ingressi anticipati come pickup consapevoli.</p></div>
+          <div class="card"><h3>Tensione senza ricompensa</h3><p>Build e ritorno hanno stessa densitÃ , spettro e attivitÃ . <strong>Correzione:</strong> scegli quale leva deve cambiare sul downbeat.</p></div>
+          <div class="card"><h3>FX al posto della struttura</h3><p>Ogni otto bar serve un riser perchÃ© il materiale non evolve. <strong>Correzione:</strong> varia groove, registro o armonia prima di aggiungere transizioni.</p></div>
+          <div class="card"><h3>Reference solo timbrica</h3><p>Confronti kick e synth ma non le durate. <strong>Correzione:</strong> marca intro, main, break e outro di almeno tre tracce comparabili.</p></div>
+        </div>
+      </section>
+
+      <section id="arr-checklist">
+        <h2>Checklist di arrangement</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Controllo</th><th>Domanda</th><th>Azione se la risposta Ã¨ no</th></tr></thead>
+            <tbody>
+              <tr><td>Fraseggio</td><td>I cambi importanti cadono su punti percepibili della frase?</td><td>Riallinea la macro-struttura; conserva solo i pickup intenzionali.</td></tr>
+              <tr><td>DJ test intro</td><td>Le prime 16-32 bar si sovrappongono a una reference senza conflitti evidenti?</td><td>Riduci hook, vocal o low-end concorrente.</td></tr>
+              <tr><td>DJ test outro</td><td>Lâ€™uscita offre almeno una frase stabile e leggibile?</td><td>Rimuovi prima gli elementi piÃ¹ identificativi.</td></tr>
+              <tr><td>Contrasto</td><td>Ogni ritorno cambia almeno una leva energetica?</td><td>Intervieni su densitÃ , spettro, ritmo, registro o profonditÃ .</td></tr>
+              <tr><td>Sviluppo</td><td>La seconda metÃ  offre una funzione o variazione riconoscibile?</td><td>Trattieni e trasforma un elemento giÃ  presente.</td></tr>
+              <tr><td>Movimento</td><td>Il loop evolve senza dipendere sempre dagli FX?</td><td>Crea versioni A/B, automazioni o variazioni ritmiche.</td></tr>
+              <tr><td>Downbeat</td><td>Il punto di arrivo delle transizioni Ã¨ chiaro?</td><td>Controlla code, pickup e confini delle clip.</td></tr>
+              <tr><td>Durata</td><td>La traccia mantiene tensione rispetto alle reference del sottogenere?</td><td>Taglia o estendi frasi complete, non secondi casuali.</td></tr>
+              <tr><td>Ascolto cieco</td><td>Riconosci le sezioni senza guardare Arrangement View?</td><td>Rendi piÃ¹ leggibili differenze e preparazioni.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>Metodo finale:</strong> esporta una bozza e ascoltala lontano dalla DAW. Segna i punti in cui perdi attenzione o anticipi il cambio: sono informazioni di arrangement, non inviti automatici ad aggiungere plugin.</div>
+      </section>
+
+      <!-- ============ MIX ENGINEERING ============ -->
+      <header class="chapter mix" id="mix-engineering">
+        <div class="chapter-kicker">Fase B Â· Fai tradurre il brano</div>
+        <h2>Mix engineering</h2>
+        <p>Quando struttura e gerarchia funzionano, bilancia frequenze, dinamica e campo stereo senza riparare lâ€™arrangement con i plugin.</p>
+      </header>
+
+      <!-- ============ 01 PRIMA DEL MIX ============ -->
+      <section id="principi">
+        <h2>Prima del mix: gain staging e headroom</h2>
+        <p>Prima di inserire plugin, regola clip gain, strumenti o <code>Utility</code> per alimentare bene la catena; usa poi i fader per il bilanciamento. Evita di sovraccaricare lâ€™ingresso dei device, soprattutto quelli non lineari. Sul master, durante il drop piÃ¹ pieno, picchi indicativi tra circa -8 e -6 dBFS senza limiter offrono un margine comodo, ma non sono uno standard obbligatorio: contano unâ€™uscita pulita e lâ€™assenza di clipping.</p>
+
+        <div class="fig">
+          <div class="fig-title">Meter di gain staging â€” esempio di margine sul master (senza limiter)</div>
+          <div class="level-meter" role="img" aria-label="Meter da meno 20 a zero dBFS con sample peak a meno 8, intervallo operativo meno 8 meno 6 e rischio sopra meno 2">
+            <div class="meter-track"><div class="meter-fill"></div><div class="meter-target"></div><div class="meter-risk"></div><i class="meter-marker"></i><span class="meter-tag target">operativo âˆ’8 / âˆ’6</span><span class="meter-tag risk">rischio</span></div>
+            <div class="meter-axis"><span style="left:0%">âˆ’20</span><span style="left:20%">âˆ’16</span><span style="left:40%">âˆ’12</span><span style="left:60%">âˆ’8</span><span style="left:80%">âˆ’4</span><span style="left:100%">0 dBFS</span></div>
+          </div>
+          <div class="meter-key"><span class="key-item"><i class="key-swatch" style="background:#69a9ff"></i>Sample peak attuale: âˆ’8 dBFS</span><span class="key-item"><i class="key-swatch" style="background:#58d6b4"></i>Intervallo operativo indicativo del master</span><span class="key-item"><i class="key-swatch" style="background:#ff7b7b"></i>Zona di rischio verso il clipping</span></div>
+          <p class="fig-cap">Il sample peak non Ã¨ true peak. Il true peak va verificato soprattutto sul master o sul file esportato; 0 dBFS Ã¨ il limite digitale, non un obiettivo.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Ordine di lavoro</h3>
+            <ul>
+              <li>Scegli kick e bass prima di tutto: sono la fondazione.</li>
+              <li>Bilancia in mono, a volume moderato, senza plugin inizialmente.</li>
+              <li>Correggi la sorgente e il layering prima di EQ o compressione.</li>
+              <li>Processa in contesto; fai solo quando serve lâ€™ascolto in solo.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Metering utile</h3>
+            <ul>
+              <li>Metti <code>Spectrum</code> alla fine di kick, bass group e master solo per verificare, non per mixare â€œcon gli occhiâ€.</li>
+              <li>Usa <code>Utility</code> con Width 0% come controllo mono temporaneo.</li>
+              <li>Fai gain match: dopo ogni plugin, confronta bypass/on allo stesso volume percepito.</li>
+              <li>Se il mix migliora solo perchÃ© Ã¨ piÃ¹ forte, non hai ancora deciso bene.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="element">
+          <h3>Gain staging per canale: intervalli pratici</h3>
+          <p>I meter delle tracce di Live mostrano <strong>Peak</strong> e <strong>RMS</strong>, non il true peak. Il true peak stima i picchi che possono formarsi tra i campioni ed Ã¨ soprattutto un controllo sul programma completo, sul master e sul file consegnato. Per impostare i singoli canali usa quindi il meter Peak post-device; considera i valori sotto come intervalli di partenza nella sezione piÃ¹ piena del brano.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Canale / famiglia</th><th>Picco indicativo</th><th>Guardia pratica</th><th>Cosa controllare</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Kick / impact principale</td><td><code>-12 / -8 dBFS</code></td><td>Indaga oltre <code>-6 dBFS</code></td><td>Transient integro, coda e saturazione post-chain.</td></tr>
+                <tr><td>Sub / bassline</td><td><code>-14 / -9 dBFS</code></td><td>Indaga oltre <code>-7 dBFS</code></td><td>Livello medio, somma con il kick e sidechain.</td></tr>
+                <tr><td>Clap / snare / tom</td><td><code>-16 / -10 dBFS</code></td><td>Indaga oltre <code>-8 dBFS</code></td><td>Picchi brevi e somma dei layer.</td></tr>
+                <tr><td>Lead / stab / vocal</td><td><code>-18 / -10 dBFS</code></td><td>Indaga oltre <code>-8 dBFS</code></td><td>Presenza percepita: non deve vincere solo per livello.</td></tr>
+                <tr><td>Hat / shaker / perc alte</td><td><code>-24 / -14 dBFS</code></td><td>Indaga oltre <code>-10 dBFS</code></td><td>Energia RMS e accumulo del top-end.</td></tr>
+                <tr><td>Pad / atmosfere / FX / return</td><td><code>-24 / -12 dBFS</code></td><td>Indaga oltre <code>-10 dBFS</code></td><td>Code sovrapposte e crescita del livello medio.</td></tr>
+                <tr><td>Drum bus / music bus</td><td><code>-12 / -6 dBFS</code></td><td>Indaga oltre <code>-4 dBFS</code></td><td>Somma dei canali e gain aggiunto dai processori.</td></tr>
+                <tr><td>Master premaster, senza limiter</td><td><code>-8 / -6 dBFS</code></td><td>Evita di superare <code>-3 dBFS</code></td><td>Se misurato, true peak preferibilmente sotto circa <code>-3 dBTP</code>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note">
+            <strong>â€œGuardiaâ€ non significa hard ceiling.</strong> Ãˆ il punto in cui fermarti e verificare perchÃ© il canale Ã¨ cosÃ¬ alto. Non normalizzare tutte le tracce allo stesso picco: due suoni con identico peak possono avere RMS, durata e loudness percepita completamente diversi.
+          </div>
+
+          <h3>Procedura ottimale</h3>
+          <ol>
+            <li>Riproduci il drop o la sezione piÃ¹ densa e azzera eventuali limiter sul master.</li>
+            <li>Porta il kick intorno a <code>-10 dBFS peak</code> come ancora iniziale, poi bilancia il basso a orecchio.</li>
+            <li>Regola clip gain, uscita dello strumento o <code>Utility</code> <em>prima</em> dei processori sensibili al livello; conserva il fader per il bilanciamento.</li>
+            <li>Controlla di nuovo il picco dopo saturazione, EQ additiva, compressione con makeup e rack paralleli: possono aggiungere diversi dB.</li>
+            <li>Fai gain match di ogni device. Se il master sale troppo, riduci sorgenti o gruppi collegati invece di nascondere la somma con un limiter.</li>
+            <li>Valuta il true peak sul master o sul file esportato. La modalitÃ  True Peak di <code>Limiter</code> serve a contenere gli inter-sample peak; non va inserita su ogni canale come routine di gain staging.</li>
+          </ol>
+        </div>
+
+        <div class="warning">
+          <strong>Regola club:</strong> sotto 100-120 Hz lavora prevalentemente in mono. Kick e sub devono stare stabili al centro; per conservare lâ€™eventuale stereo delle alte usa <code>Utility â€º Bass Mono</code> invece di chiudere sempre lâ€™intera traccia a Width 0%.
+        </div>
+      </section>
+
+      <!-- ============ 02 MAPPA FREQUENZE ============ -->
+      <section id="mix-mappa">
+        <h2>Mappa delle frequenze per elemento</h2>
+        <p>Questa mappa visiva riassume dove puÃ² vivere lâ€™energia utile di ogni elemento, dove cercare accumuli e dove valutare un intervento. La base Ã¨ una scala logaritmica 20 Hzâ€“20 kHz; le aree colorate restano volutamente indicative perchÃ© tonalitÃ , sample e arrangiamento spostano i punti reali.</p>
+
+        <div class="fig">
+          <div class="fig-title">Mappa cromatica â€” asse logaritmico 20 Hzâ€“20 kHz</div>
+          <div class="freq-axis desktop-only" aria-hidden="true"><div></div><div class="freq-axis-track"><span style="left:0%">20 Hz</span><span style="left:15.9%">60</span><span style="left:36.6%">250</span><span style="left:46.6%">500</span><span style="left:66.7%">2 k</span><span style="left:86.7%">8 k</span><span style="left:100%">20 kHz</span></div></div>
+          <div class="freqmap desktop-only">
+            <div class="frow"><div class="fname">Kick</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:14.9%"></div>
+                <div class="fzone body" style="left:14.9%;width:16.9%"></div>
+                <div class="fzone cut" style="left:31.8%;width:18.1%"></div>
+                <div class="fzone boost" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone cut" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Rumble</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:18%"></div>
+                <div class="fzone warn" style="left:18%;width:14%"></div>
+                <div class="fzone cut" style="left:31.8%;width:18.1%"></div>
+                <div class="fzone body" style="left:49.9%;width:30%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Clap / Snare</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:31.8%"></div>
+                <div class="fzone body" style="left:31.8%;width:18.1%"></div>
+                <div class="fzone boost" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone warn" style="left:68%;width:18.1%"></div>
+                <div class="fzone boost" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Hi-hat</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:49.9%"></div>
+                <div class="fzone warn" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone body" style="left:68%;width:18.1%"></div>
+                <div class="fzone boost" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Sub bass</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:10%"></div>
+                <div class="fzone body" style="left:10%;width:21.8%"></div>
+                <div class="fzone warn" style="left:31.8%;width:10%"></div>
+                <div class="fzone cut" style="left:41.8%;width:58.2%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Mid bass</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:24%"></div>
+                <div class="fzone body" style="left:24%;width:25.9%"></div>
+                <div class="fzone boost" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone warn" style="left:68%;width:18.1%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Lead / Stab</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:31.8%"></div>
+                <div class="fzone warn" style="left:31.8%;width:18.1%"></div>
+                <div class="fzone boost" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone warn" style="left:68%;width:18.1%"></div>
+                <div class="fzone boost" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Pad</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:40%"></div>
+                <div class="fzone warn" style="left:40%;width:9.9%"></div>
+                <div class="fzone body" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone boost" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">Vocal</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:26%"></div>
+                <div class="fzone warn" style="left:26%;width:23.9%"></div>
+                <div class="fzone boost" style="left:49.9%;width:18.1%"></div>
+                <div class="fzone warn" style="left:68%;width:18.1%"></div>
+                <div class="fzone boost" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+            <div class="frow"><div class="fname">FX</div>
+              <div class="fbar">
+                <div class="fzone cut" style="left:0%;width:40%"></div>
+                <div class="fzone body" style="left:40%;width:28%"></div>
+                <div class="fzone warn" style="left:68%;width:18.1%"></div>
+                <div class="fzone body" style="left:86.1%;width:13.9%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="freq-cards" aria-label="Zone frequenziali per elemento, layout mobile">
+            <div class="freq-card"><strong>Kick</strong><span>Corpo 45â€“100 Hz Â· click 2â€“5 kHz Â· attenua subsonico o top solo se inutile.</span></div>
+            <div class="freq-card"><strong>Rumble</strong><span>Controlla 60â€“350 Hz Â· low-pass 3â€“8 kHz se la distorsione crea fruscio.</span></div>
+            <div class="freq-card"><strong>Clap / Snare</strong><span>Corpo 180â€“300 Hz Â· crack 1.5â€“3 kHz Â· attenzione 4â€“8 kHz.</span></div>
+            <div class="freq-card"><strong>Hi-hat</strong><span>Definizione 3â€“8 kHz Â· aria 8â€“12 kHz Â· filtra le basse prive di ruolo.</span></div>
+            <div class="freq-card"><strong>Sub bass</strong><span>Energia utile circa 40â€“100 Hz Â· controlla 120â€“250 Hz Â· armoniche solo se servono.</span></div>
+            <div class="freq-card"><strong>Mid bass</strong><span>Corpo 150â€“500 Hz Â· carattere 500 Hzâ€“2 kHz Â· proteggi lo spazio del sub.</span></div>
+            <div class="freq-card"><strong>Lead / Stab</strong><span>Presenza 1â€“3 kHz Â· harshness 2.5â€“6 kHz Â· aria con cautela.</span></div>
+            <div class="freq-card"><strong>Pad</strong><span>Scolpisci 250â€“600 Hz Â· lascia prioritÃ  a lead e voce tra 1â€“3 kHz Â· aria solo se utile.</span></div>
+            <div class="freq-card"><strong>Vocal</strong><span>Corpo 200â€“400 Hz Â· presenza 2â€“5 kHz Â· controlla sibilanza 5â€“8 kHz.</span></div>
+            <div class="freq-card"><strong>FX</strong><span>Filtra il low-end non funzionale Â· controlla 2â€“8 kHz e il top cumulativo con hats e lead.</span></div>
+          </div>
+          <div class="flegend">
+            <span><i class="dot" style="background:rgba(255,123,123,.7)"></i> Attenua / filtra se inutile</span>
+            <span><i class="dot" style="background:rgba(88,214,180,.7)"></i> Corpo utile dellâ€™elemento</span>
+            <span><i class="dot" style="background:rgba(105,169,255,.7)"></i> Candidato a boost leggero</span>
+            <span><i class="dot" style="background:rgba(255,191,105,.7)"></i> Attenzione: harsh / fango / conflitto</span>
+          </div>
+          <p class="fig-cap">Scala logaritmica: sub 20-60 Hz Â· bass 60-250 Hz Â· low-mid 250-500 Hz Â· mid 500 Hz-2 kHz Â· high-mid 2-8 kHz Â· high 8-20 kHz. Sono punti di partenza, non ricette: individua i problemi a volume controllato e conferma ogni intervento in contesto con bypass a volume pareggiato.</p>
+        </div>
+
+        <div class="fig">
+          <div class="fig-title">Conflitti tipici â€” bande su scala logaritmica reale</div>
+          <div class="freq-axis" aria-hidden="true"><div></div><div class="freq-axis-track"><span style="left:0%">20 Hz</span><span style="left:15.9%">60</span><span style="left:36.6%">250</span><span style="left:46.6%">500</span><span style="left:66.7%">2 k</span><span style="left:86.7%">8 k</span><span style="left:100%">20 kHz</span></div></div>
+          <div class="range-chart" role="img" aria-label="Fondamentale e click del kick, sub, mid bass e zona condivisa su asse logaritmico">
+            <div class="range-row"><div class="range-label">Kick Â· fondamentale</div><div class="range-track"><i class="range-segment" style="left:11.7%;width:5.4%"></i></div></div>
+            <div class="range-row"><div class="range-label">Kick Â· click</div><div class="range-track"><i class="range-segment" style="left:66.7%;width:13.2%"></i></div></div>
+            <div class="range-row"><div class="range-label">Sub Â· 40â€“100 Hz</div><div class="range-track"><i class="range-segment sub" style="left:10%;width:13.3%"></i></div></div>
+            <div class="range-row"><div class="range-label">Mid bass Â· 150 Hzâ€“2 k</div><div class="range-track"><i class="range-segment mid" style="left:29.2%;width:37.5%"></i></div></div>
+            <div class="range-row"><div class="range-label">Clap / hat / lead / vocal</div><div class="range-track"><i class="range-segment shared" style="left:56.6%;width:30.1%"></i></div></div>
+          </div>
+          <div class="range-notes"><div class="range-note"><strong>45â€“65 Hz:</strong> kick e sub si sovrappongono spesso. Decidi chi porta la fondamentale.</div><div class="range-note"><strong>1â€“8 kHz:</strong> molti elementi condividono presenza e attacco; prioritÃ  e sottrazione contano piÃ¹ del volume.</div></div>
+          <p class="fig-cap">Le bande indicano intervalli tipici, non proprietÃ  esclusive. La posizione Ã¨ calcolata con log<sub>10</sub>(f/20) sullâ€™intervallo 20 Hzâ€“20 kHz.</p>
+        </div>
+      </section>
+
+      <!-- ============ 03 KICK ============ -->
+      <section id="kick">
+        <h2>Kick standard</h2>
+        <div class="element">
+          <h3>Ruolo e catena base</h3>
+          <p><span class="label">Obiettivo</span> Essere il riferimento ritmico e fisico del brano. In house e tech house deve avere peso e groove; in techno puÃ² essere piÃ¹ lungo, denso e aggressivo, ma deve lasciare una casa precisa al basso.</p>
+
+          <div class="chainviz">
+            <span class="node bus">KICK</span><span class="arr">â†’</span>
+            <span class="node">EQ Eight</span><span class="arr">â†’</span>
+            <span class="node opt">Saturator / Roar (se serve)</span><span class="arr">â†’</span>
+            <span class="node">Utility (Bass Mono; Width 0% se serve)</span><span class="arr">â†’</span>
+            <span class="node opt">Spectrum</span>
+          </div>
+
+          <h3>EQ â€” cosa ascoltare</h3>
+          <ul>
+            <li><strong>25-35 Hz:</strong> high-pass molto leggero solo se câ€™Ã¨ energia subsonica inutile. Non tagliare automaticamente: se il kick perde massa, hai esagerato.</li>
+            <li><strong>45-65 Hz:</strong> fondamentale tipica. Se manca peso ma il sample Ã¨ corretto, boost largo +1 / +2 dB con <code>EQ Eight</code>.</li>
+            <li><strong>100-180 Hz:</strong> corpo. Troppo = â€œboomyâ€; taglia spesso -1 / -3 dB con Q medio.</li>
+            <li><strong>250-450 Hz:</strong> boxiness/cartone. Se sembra piccolo ma impastato, riduci circa -2 / -4 dB.</li>
+            <li><strong>2-5 kHz:</strong> click e definizione. +1 / +3 dB largo se non passa su speaker piccoli; riduci se punge.</li>
+            <li><strong>8-12 kHz:</strong> spesso rumore inutile: filtra solo se interferisce con hat e top-end.</li>
+          </ul>
+
+          <h3>Compressione</h3>
+          <p>Un kick giÃ  campionato bene raramente necessita compressione. Usala solo se il transient Ã¨ incoerente o il layering non Ã¨ stabile. Con <code>Compressor</code>: ratio 2:1-4:1, attack 10-30 ms, release 40-100 ms, 1-3 dB di gain reduction. Attack troppo veloce toglie punch; release troppo lungo appiattisce il groove.</p>
+
+          <h3>Saturazione e stereo</h3>
+          <p><code>Saturator</code> in Soft Sine o Analog Clip, Drive +1 / +3 dB, genera armoniche percepibili su impianti piccoli. Per piÃ¹ carattere <code>Roar</code> con Mix 5-20%, pareggiando lâ€™uscita. Mantieni la fondamentale centrale con <code>Utility â€º Bass Mono</code> intorno a 100-120 Hz; usa Width 0% solo se vuoi rendere mono lâ€™intero kick.</p>
+        </div>
+      </section>
+
+      <!-- ============ 04 RUMBLE ============ -->
+      <section id="rumble">
+        <h2>Rumble kick techno</h2>
+        <div class="element">
+          <h3>Ruolo e costruzione</h3>
+          <p><span class="label">Obiettivo</span> Coda ritmica e atmosferica che riempie gli spazi tra i colpi senza diventare un secondo sub indistinto. Trattalo come parte separata, su una traccia duplicata o su un return dedicato impostato 100% wet.</p>
+
+          <div class="chainviz">
+            <span class="node bus">KICK (send)</span><span class="arr">â†’</span>
+            <span class="node">Hybrid Reverb / Reverb (100% wet)</span><span class="arr">â†’</span>
+            <span class="node">Saturator / Roar</span><span class="arr">â†’</span>
+            <span class="node">EQ Eight / Auto Filter</span><span class="arr">â†’</span>
+            <span class="node">Compressor â¤¿ sidechain dal KICK</span><span class="arr">â†’</span>
+            <span class="node">Utility (Bass Mono)</span>
+          </div>
+
+          <div class="fig">
+            <div class="fig-title">Ducking del rumble â€” impulso, gain e coda audio</div>
+            <div class="plot-shell" role="img" aria-label="A ogni kick il gain del rumble cade rapidamente e recupera in modo monotono; la coda audio non processata decade separatamente">
+              <svg viewBox="0 0 840 240" aria-hidden="true">
+                <g stroke="#2a3850" stroke-width="1"><line x1="40" y1="35" x2="40" y2="210"/><line x1="240" y1="35" x2="240" y2="210"/><line x1="440" y1="35" x2="440" y2="210"/><line x1="640" y1="35" x2="640" y2="210"/><line x1="810" y1="210" x2="40" y2="210"/></g>
+                <g fill="#58d6b4"><rect x="38" y="42" width="7" height="168"/><rect x="238" y="42" width="7" height="168"/><rect x="438" y="42" width="7" height="168"/><rect x="638" y="42" width="7" height="168"/></g>
+                <path d="M40 190 C55 72 110 62 235 58 L240 190 C255 72 310 62 435 58 L440 190 C455 72 510 62 635 58 L640 190 C655 72 710 62 810 58" fill="none" stroke="#b48cff" stroke-width="5" stroke-linecap="round"/>
+                <path d="M40 55 C95 92 145 140 235 182 M240 55 C295 92 345 140 435 182 M440 55 C495 92 545 140 635 182 M640 55 C695 92 745 140 810 182" fill="none" stroke="#69a9ff" stroke-width="3" stroke-dasharray="8 6"/>
+              </svg>
+            </div>
+            <div class="plot-key"><span class="key-item"><i class="key-swatch impulse"></i>Impulso del kick</span><span class="key-item"><i class="key-swatch" style="background:#b48cff"></i>Gain del rumble: attacco rapido, release monotona</span><span class="key-item"><i class="key-swatch dashed"></i>Coda audio del rumble non duckata</span></div>
+            <p class="fig-cap">La linea viola sale verso il gain nominale senza ricadere prima del kick successivo. Se il recupero termina troppo tardi il groove zoppica; se Ã¨ quasi istantaneo, il pumping diventa poco percepibile.</p>
+          </div>
+
+          <h3>EQ â€” separare, non sommare</h3>
+          <ul>
+            <li>High-pass il rumble intorno a 35-55 Hz con <code>Auto Filter</code> o <code>EQ Eight</code>: il sub piÃ¹ basso appartiene al kick o al sub bass, non a entrambi.</li>
+            <li>Riduci 60-120 Hz di -2 / -6 dB se kick e rumble si fondono in una massa senza attacco.</li>
+            <li>Controlla 180-350 Hz: da grande a fangoso Ã¨ un attimo. Taglio iniziale -2 / -4 dB, Q medio.</li>
+            <li>Low-pass a 3-8 kHz se riverbero/distorsione crea fruscio che compete con hats e clap.</li>
+          </ul>
+
+          <h3>Compressione sidechain</h3>
+          <p><code>Compressor</code> con Sidechain attivo e input dal kick: ratio 4:1-10:1, attack 0.1-3 ms, release 120-280 ms, 4-10 dB di gain reduction. Qui il pumping Ã¨ parte del design, non un difetto.</p>
+
+          <h3>Saturazione e stereo</h3>
+          <p><code>Saturator</code> Drive +2 / +6 dB o <code>Roar</code> in parallelo rendono il rumble udibile senza invadere il sub. Attiva <code>Utility â€º Bass Mono</code> intorno a 100-120 Hz; sopra, Width 110-130% Ã¨ un punto di partenza solo se il controllo mono regge.</p>
+        </div>
+      </section>
+
+      <!-- ============ 05 CLAP ============ -->
+      <section id="clap">
+        <h2>Clap / Snare</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Backbeat, contrasto e identitÃ  del groove. Deve tagliare il mix senza diventare una lama di medio-alte.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass indicativo a 120-180 Hz; sali verso 200-250 Hz se lotta con kick e basso.</li>
+            <li>180-300 Hz dÃ  body; 300-600 Hz Ã¨ boxiness: -2 / -4 dB quando â€œsa di scatolaâ€.</li>
+            <li>1.5-3 kHz: crack e presenza; piccolo boost se scompare nel mix.</li>
+            <li>4-8 kHz: zona harshness piÃ¹ comune. Se stanca o sibila, notch -2 / -5 dB.</li>
+            <li>8-12 kHz: aria, shelf +1 / +2 dB solo se il sample Ã¨ opaco.</li>
+          </ul>
+          <h3>Compressione, saturazione e stereo</h3>
+          <p>Se ha transient naturale, non comprimere. Se incoerente: <code>Compressor</code> 2:1-4:1, attack 15-30 ms, release 50-120 ms, 1-3 dB. <code>Drum Buss</code> con Drive 2-8%, Transients leggermente positivo, Boom a zero puÃ² compattare un layer group. Se il sample contiene basse inutili, filtrale; se invece il body Ã¨ parte del suono, mantienilo centrale senza cancellarlo per regola.</p>
+        </div>
+      </section>
+
+      <!-- ============ 06 HAT ============ -->
+      <section id="hihat">
+        <h2>Hi-hat chiusi e aperti</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> VelocitÃ , swing e qualitÃ  percepita. Il closed guida il movimento; lâ€™open crea accento. Davanti quanto basta, senza occupare tutto il top-end.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li><strong>Closed:</strong> high-pass 250-500 Hz. Metallico/sporco â†’ cerca risonanze 500 Hz-2 kHz, -2 / -5 dB.</li>
+            <li><strong>Open:</strong> high-pass 180-350 Hz. Se riempie troppo, controlla 400 Hz-1.5 kHz.</li>
+            <li><strong>3-6 kHz:</strong> definizione; troppo = â€œgraffiaâ€. Campana stretta in riduzione.</li>
+            <li><strong>8-12 kHz:</strong> aria. Shelf +1 / +2 dB se opaco; se frigge, taglia o cambia sample.</li>
+          </ul>
+          <h3>Compressione</h3>
+          <p>Spesso non serve. Picchi irregolari sui closed: 2:1, attack 3-10 ms, release 30-70 ms, 1-2 dB. Open hat sopra il kick: sidechain leggero 2:1-4:1, attack 1-5 ms, release 50-100 ms, 1-3 dB.</p>
+          <h3>Saturazione e stereo</h3>
+          <p><code>Saturator</code> Drive +0.5 / +2 dB per udibilitÃ  a volume piÃ¹ basso. Ampiezza con panning o stereo nativo; sotto 200 Hz non devono avere informazioni utili: filtra.</p>
+        </div>
+      </section>
+
+      <!-- ============ 07 PERC ============ -->
+      <section id="perc">
+        <h2>Percussioni e toms</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Movimento, call-and-response, firma ritmica â€” senza togliere prioritÃ  a kick, basso e clap.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass per ruolo: shaker 250-500 Hz, conga 100-180 Hz, tom 45-80 Hz.</li>
+            <li>200-500 Hz: fango/boxiness. Sottrai 2-4 dB alle tracce che non portano corpo necessario.</li>
+            <li>700 Hz-2 kHz: nota e attacco dei tom; piccolo boost se il pattern non si legge.</li>
+            <li>3-7 kHz: slap; se punge, cerca e riduci invece di abbassare tutto il bus.</li>
+          </ul>
+          <h3>Compressione, saturazione e stereo</h3>
+          <p>Pattern non uniforme: 2:1-4:1, attack 10-25 ms, release 50-150 ms, 1-4 dB. Tom con coda lunga: sidechain dal kick 2:1-4:1, release 80-180 ms. <code>Drum Buss</code> sul gruppo, Drive 3-10%, Crunch moderato. Panning sopra 150 Hz; tom fondamentali centrali.</p>
+        </div>
+      </section>
+
+      <!-- ============ 08 BASS ============ -->
+      <section id="bass">
+        <h2>Bassline: sub bass e mid bass</h2>
+
+        <div class="fig">
+          <div class="fig-title">Architettura del low-end â€” divisione dei ruoli</div>
+          <div class="freq-axis" aria-hidden="true"><div></div><div class="freq-axis-track"><span style="left:0%">20 Hz</span><span style="left:17.7%">40</span><span style="left:28.1%">60</span><span style="left:41.1%">100</span><span style="left:58.9%">200</span><span style="left:76.6%">400</span><span style="left:100%">1 kHz</span></div></div>
+          <div class="range-chart" role="img" aria-label="Kick sub e mid bass su asse logaritmico da 20 hertz a 1 kilohertz">
+            <div class="range-row"><div class="range-label">Kick Â· 45â€“65 Hz</div><div class="range-track"><i class="range-segment" style="left:20.7%;width:9.4%"></i></div></div>
+            <div class="range-row"><div class="range-label">Sub Â· 60â€“90 Hz</div><div class="range-track"><i class="range-segment sub" style="left:28.1%;width:10.4%"></i></div></div>
+            <div class="range-row"><div class="range-label">Mid bass Â· 150 Hzâ€“1 k</div><div class="range-track"><i class="range-segment mid" style="left:51.5%;width:48.5%"></i></div></div>
+          </div>
+          <div class="range-notes"><div class="range-note"><strong>Separazione in frequenza:</strong> scegli fondamentali complementari e filtra il mid bass solo quanto serve.</div><div class="range-note"><strong>Separazione nel tempo:</strong> envelope, note e sidechain decidono se kick e sub convivono anche quando le bande si toccano.</div></div>
+          <p class="fig-cap">Scala logaritmica 20 Hzâ€“1 kHz. Cerca le fondamentali reali con <code>Spectrum</code>: le bande mostrano esempi plausibili, non target universali.</p>
+        </div>
+
+        <div class="element">
+          <h3>Sub bass</h3>
+          <p><span class="label">Obiettivo</span> Base stabile e controllata che completa il kick. Non deve impressionare in solo: deve far sembrare il kick piÃ¹ grande quando entrano insieme.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass solo per rumble sotto 20-30 Hz, se presente. Filtri eccessivi cambiano fase e assottigliano.</li>
+            <li>Decidi il rapporto col kick: se il kick domina a 50-60 Hz, dai energia al sub a 70-100 Hz o viceversa.</li>
+            <li>120-250 Hz: taglia -1 / -4 dB se gonfio. Low-pass 90-180 Hz se esiste un mid bass separato.</li>
+          </ul>
+          <h3>Compressione e sidechain</h3>
+          <p>Sub a ampiezza costante: niente compressione normale. Sidechain dal kick con <code>Compressor</code>: ratio 4:1-10:1, attack 0.1-3 ms, release 80-220 ms, 3-8 dB. Il sub recupera prima del prossimo kick senza salti innaturali.</p>
+          <h3>Saturazione e stereo</h3>
+          <p>Sub non udibile su speaker piccoli â†’ armoniche con <code>Saturator</code> +1 / +3 dB o <code>Roar</code> parallelo Mix 5-15%. Se il sub Ã¨ una sorgente pura, Width 0% Ã¨ appropriato; su un basso multibanda usa invece <code>Utility â€º Bass Mono</code> e conserva lo stereo utile delle armoniche.</p>
+        </div>
+
+        <div class="element">
+          <h3>Mid bass</h3>
+          <p><span class="label">Obiettivo</span> Rende la bassline riconoscibile su laptop e cuffie: groove, nota, texture. Non duplica il sub.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass 80-150 Hz per lasciare il sub pulito; alza se entrano in conflitto.</li>
+            <li>150-350 Hz: calore vs fango, riduci -2 / -4 dB se indistinto.</li>
+            <li>500 Hz-1.5 kHz: nota e carattere, +1 / +3 dB solo se non si legge su sistemi piccoli.</li>
+            <li>2-5 kHz: growl; se interferisce con clap/vocal/lead, sottrazione locale.</li>
+          </ul>
+          <h3>Compressione, saturazione e stereo</h3>
+          <p>Sidechain meno profondo del sub: 3:1-6:1, attack 1-5 ms, release 80-180 ms, 2-6 dB. <code>Saturator</code> +2 / +5 dB o <code>Roar</code> Mix 10-30% per presenza. Se allarghi a 105-125%, proteggi prima lâ€™area sotto 150-250 Hz con Bass Mono o con un rack multibanda, poi verifica in mono.</p>
+        </div>
+      </section>
+
+      <!-- ============ 09 LEAD ============ -->
+      <section id="lead">
+        <h2>Synth lead e stab</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Hook, energia, identitÃ . Occupa una zona media precisa e si alterna con vocal, clap e percussioni.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass 100-250 Hz. 200-500 Hz: â€œgrosso ma confusoâ€ â†’ -2 / -4 dB (low-mid build-up).</li>
+            <li>1-3 kHz: intelligibilitÃ , +1 / +2 dB largo se perso nel mix.</li>
+            <li>2.5-6 kHz: harshness, notch -2 / -5 dB quando fa male a volume moderato.</li>
+            <li>8-12 kHz: aria, poco e solo se gli hat non sono giÃ  aperti.</li>
+          </ul>
+          <h3>Compressione</h3>
+          <p>Note/accordi variabili: <code>Compressor</code> 2:1-3:1, attack 15-35 ms, release 80-180 ms, 1-3 dB. Lead che invade il kick: sidechain 2:1-4:1, attack 1-5 ms, release 60-140 ms, 1-4 dB. Uno stab corto e statico non va compresso per abitudine.</p>
+          <h3>Saturazione e stereo</h3>
+          <p><code>Saturator</code> +1 / +4 dB fa avanzare il lead senza boost aggressivi. <code>Roar</code> Mix 5-25% per texture electro/techno ruvida. Centro libero per kick/bass/vocal: allarga solo le alte, Width 105-130%.</p>
+        </div>
+      </section>
+
+      <!-- ============ 10 PAD ============ -->
+      <section id="pad">
+        <h2>Pad</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> ProfonditÃ , atmosfera, colla armonica. Si deve sentire soprattutto quando lo muti.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass 150-350 Hz (fino a 400 Hz in arrangiamenti densi).</li>
+            <li>250-600 Hz: fango/boxiness, -2 / -5 dB se il mix si chiude quando entra.</li>
+            <li>1-3 kHz compete con lead e vocal: scolpisci qui prima di alzare il lead.</li>
+            <li>8-14 kHz: aria, shelf +1 / +2 dB solo se non aggiunge hiss.</li>
+          </ul>
+          <h3>Compressione, saturazione e stereo</h3>
+          <p>Spesso non serve. Note irregolari: 2:1, attack 25-50 ms, release 150-300 ms, 1-2 dB. Sidechain dal kick: 2:1-4:1, attack 2-10 ms, release 120-280 ms, 2-5 dB. <code>Saturator</code> +1 / +2 dB. Width 110-140% ammessa, low-end rimosso, mono verificato.</p>
+        </div>
+      </section>
+
+      <!-- ============ 11 VOCI ============ -->
+      <section id="voci">
+        <h2>Voci e vocal chop</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Elemento di focus: anche un chop deve essere intenzionale, ritmico e leggibile.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li>High-pass 80-130 Hz (voce piena), 150-250 Hz (chop sottili/processati).</li>
+            <li>200-400 Hz: chiusa/nasale/muddy â†’ -2 / -4 dB, Q medio.</li>
+            <li>700 Hz-1.2 kHz: boxiness, intervieni solo se Ã¨ chiaramente un problema.</li>
+            <li>2-5 kHz: presenza, +1 / +3 dB largo per parlare sopra il mix.</li>
+            <li>5-8 kHz: sibilanza â€” notch mirato con <code>EQ Eight</code> o <code>Multiband Dynamics</code> molto leggero sulla banda alta.</li>
+            <li>10-14 kHz: aria, shelf +1 / +2 dB solo se opaca e non rumorosa.</li>
+          </ul>
+          <h3>Compressione</h3>
+          <p>Voce lead: <code>Compressor</code> 2:1-4:1, attack 10-25 ms, release 60-150 ms, 3-6 dB sui picchi. Chop uniforme: 1-3 dB o nulla. Kick che copre il chop: sidechain minimo 2:1, 1-2 dB. Il sidechain non sostituisce un arrangiamento sovraccarico.</p>
+          <h3>Saturazione e stereo</h3>
+          <p><code>Saturator</code> +1 / +3 dB per densitÃ ; <code>Roar</code> parallelo Mix 5-15% per texture aggressive. Lead spesso centrale; chop pannabili sopra 150-200 Hz. Filtra o centra il low-end privo di informazione stereo utile.</p>
+        </div>
+      </section>
+
+      <!-- ============ 12 FX ============ -->
+      <section id="fx">
+        <h2>FX: riser, sweep e impact</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Tensione, transizioni, scala percepita. Aumentano lâ€™impatto della sezione successiva senza rubare il ruolo a kick, clap o hook.</p>
+          <h3>EQ</h3>
+          <ul>
+            <li><strong>Riser/sweep:</strong> high-pass 150-400 Hz â€” il low-end degli FX sporca lâ€™ingresso del drop.</li>
+            <li><strong>Impact con sub:</strong> high-pass 25-35 Hz e decidi se convive col kick o si accorcia prima del downbeat.</li>
+            <li>2-6 kHz: riser doloroso â†’ riduci risonanze -2 / -6 dB con <code>EQ Eight</code>.</li>
+            <li>8-14 kHz: hype vs hiss cumulativo â€” low-pass se gli hat sono giÃ  brillanti.</li>
+          </ul>
+          <h3>Compressione, saturazione e stereo</h3>
+          <p>Impact imprevedibile: 2:1-4:1, attack 10-30 ms, release 100-250 ms, 1-3 dB. Sidechain dal kick su riser e reverb tail: 2:1-6:1, release 100-250 ms, 2-6 dB. Saturazione per udibilitÃ  senza volume: <code>Saturator</code> +1 / +4 dB o <code>Roar</code> Mix 5-20%. FX alti larghi; low impact mono sotto 100-120 Hz.</p>
+        </div>
+      </section>
+
+      <!-- ============ 13 DRUM BUS ============ -->
+      <section id="drumbus">
+        <h2>Drum bus</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Batteria come famiglia coerente, con punch e contrasto. Non corregge kick/clap/hat mal scelti: quelli si sistemano alla sorgente.</p>
+
+          <div class="chainviz">
+            <span class="node bus">DRUM GROUP</span><span class="arr">â†’</span>
+            <span class="node">EQ Eight</span><span class="arr">â†’</span>
+            <span class="node">Glue Compressor</span><span class="arr">â†’</span>
+            <span class="node opt">Drum Buss / Saturator</span><span class="arr">â†’</span>
+            <span class="node">Utility</span><span class="arr">â†’</span>
+            <span class="node opt">Spectrum</span>
+          </div>
+
+          <div class="fig">
+            <div class="fig-title">Glue Compressor â€” transient e gain reduction nello stesso tempo</div>
+            <div class="plot-shell" role="img" aria-label="Il transient supera la soglia, la gain reduction cresce durante l'attack e recupera monotonicamente durante la release">
+              <svg viewBox="0 0 840 240" aria-hidden="true">
+                <g stroke="#2a3850"><line x1="35" y1="205" x2="810" y2="205"/><line x1="35" y1="82" x2="810" y2="82" stroke-dasharray="7 6"/></g>
+                <path d="M35 190 L90 190 L112 48 L138 112 C165 150 200 178 260 190 L430 190 L452 58 L478 118 C510 156 550 181 620 190 L810 190" fill="none" stroke="#58d6b4" stroke-width="4"/>
+                <path d="M35 190 L90 190 L112 48 L138 128 C165 160 200 181 260 190 L430 190 L452 58 L478 132 C510 163 550 183 620 190 L810 190" fill="none" stroke="#69a9ff" stroke-width="3" stroke-dasharray="8 6"/>
+                <path d="M35 45 L112 45 C126 45 140 78 155 105 C205 88 255 55 325 45 L452 45 C466 45 480 78 495 105 C545 88 595 55 665 45 L810 45" fill="none" stroke="#ffbf69" stroke-width="4"/>
+                <rect x="112" y="28" width="43" height="177" fill="rgba(180,140,255,.09)"/><rect x="155" y="28" width="170" height="177" fill="rgba(105,169,255,.06)"/>
+              </svg>
+            </div>
+            <div class="plot-key"><span class="key-item"><i class="key-swatch"></i>Transient in ingresso</span><span class="key-item"><i class="key-swatch dashed"></i>Uscita compressa</span><span class="key-item"><i class="key-swatch" style="background:#ffbf69"></i>Gain reduction: piÃ¹ in basso = piÃ¹ GR</span></div>
+            <div class="parameter-cards"><div class="parameter-card"><strong>Soglia</strong>Il transient la supera; parte la compressione.</div><div class="parameter-card"><strong>Attack Â· 10â€“30 ms</strong>La GR cresce gradualmente e lascia passare parte dellâ€™attacco.</div><div class="parameter-card"><strong>Release Â· Auto / 0.1â€“0.3 s</strong>La GR torna in modo monotono verso zero prima del colpo seguente.</div></div>
+            <p class="fig-cap">Nel grafico la linea gialla scende quando aumenta la gain reduction e risale verso zero durante la release. Punta a 1â€“3 dB; se il groove perde impatto, riduci la compressione.</p>
+          </div>
+
+          <h3>Impostazioni pratiche</h3>
+          <ul>
+            <li><strong>EQ Eight:</strong> solo accumuli evidenti, spesso -1 / -2 dB tra 200 e 400 Hz. Niente boost grandi sul bus.</li>
+            <li><strong>Glue Compressor:</strong> ratio 2:1, attack 10 o 30 ms, release Auto o 0.1-0.3 s, 1-3 dB di gain reduction.</li>
+            <li><strong>Drum Buss:</strong> Drive 2-10%, Crunch basso, Damp per top-end in eccesso, Transients 0/+10. Boom con estrema cautela: puÃ² distruggere il rapporto kick/bass.</li>
+            <li><strong>Saturator:</strong> +0.5 / +2 dB se sterile. Transients schiacciati â†’ torna indietro.</li>
+          </ul>
+          <h3>Stereo e low-end</h3>
+          <p>Kick e basse centrali; hat e perc portano la larghezza. <code>Utility</code> Width 95-105% sul bus. Verifica a Width 0%: se spariscono elementi essenziali, Ã¨ fase o layering stereo mal costruito.</p>
+        </div>
+      </section>
+
+      <!-- ============ 14 MASTER BUS ============ -->
+      <section id="masterbus">
+        <h2>Master bus: solo catena di mix</h2>
+        <div class="element">
+          <p><span class="label">Obiettivo</span> Mix coerente, con margine, senza inseguire una falsa loudness. In questa catena non si usa il limiter per raggiungere un target LUFS: quello appartiene al mastering.</p>
+
+          <div class="chainviz">
+            <span class="node bus">MASTER</span><span class="arr">â†’</span>
+            <span class="node opt">Utility (gain)</span><span class="arr">â†’</span>
+            <span class="node opt">EQ Eight (max Â±0.5/1.5 dB)</span><span class="arr">â†’</span>
+            <span class="node opt">Glue Compressor (0.5-2 dB GR)</span><span class="arr">â†’</span>
+            <span class="node">Spectrum</span><span class="arr">â†’</span>
+            <span class="node opt">Utility (mono check temporaneo)</span>
+          </div>
+
+          <ul>
+            <li><strong>Utility:</strong> unâ€™istanza iniziale puÃ² gestire il gain; unâ€™istanza finale temporanea serve per il mono-check. Non aumentare Width sul master per â€œaprireâ€ un mix chiuso: risolvi le tracce.</li>
+            <li><strong>EQ Eight:</strong> correzioni ampie e piccole. Se servono 3 dB o piÃ¹, torna ai gruppi o alle sorgenti.</li>
+            <li><strong>Glue Compressor:</strong> opzionale, ratio 2:1, attack 30 ms, release Auto, 0.5-2 dB nei momenti forti. Kick che perde punch â†’ bypass.</li>
+            <li><strong>Spectrum:</strong> verifica bilanciamento generale, decisioni con lâ€™ascolto e reference level-matched.</li>
+          </ul>
+
+          <div class="warning">
+            <strong>Stop qui:</strong> lascia headroom e conserva la dinamica. Un limiter puÃ² essere utile solo come ascolto di anteprima; disattivalo quando esporti il premaster destinato al mastering.
+          </div>
+        </div>
+
+        <div class="fig">
+          <div class="fig-title">Campo stereo â€” larghezza in funzione della frequenza</div>
+          <div class="stereo">
+            <div class="stereo-field" role="img" aria-label="Le basse frequenze sono strette e centrali; salendo in frequenza gli elementi possono occupare maggiore larghezza">
+              <div class="width-cone"></div><div class="stereo-center"></div>
+              <div class="stereo-axis-y"><span>alte</span><span>medio-alte</span><span>medio-basse</span><span>sub</span></div><div class="stereo-axis-x"><span>L</span><span>centro</span><span>R</span></div>
+              <div class="stereo-item" style="--y:88%;--w:18%;--item-color:#58d6b4">Kick / Sub</div>
+              <div class="stereo-item" style="--y:67%;--w:30%;--item-color:#b48cff">Mid bass</div>
+              <div class="stereo-item" style="--y:47%;--w:46%;--item-color:#ffbf69">Clap / Vocal / Lead</div>
+              <div class="stereo-item" style="--y:25%;--w:68%;--item-color:#69a9ff">Hat / Perc</div>
+              <div class="stereo-item" style="--y:10%;--w:82%;--item-color:#b48cff">Pad / FX alti</div>
+            </div>
+            <div class="utility-panel" aria-label="Valori Utility indicativi"><h3>Utility â€” punti di partenza</h3><div class="utility-list">
+              <div class="utility-row"><span>Kick / Sub</span><span>Bass Mono / 0%</span></div><div class="utility-row"><span>Mid bass</span><span>BM + 105â€“125%</span></div><div class="utility-row"><span>Drum bus</span><span>95â€“105%</span></div><div class="utility-row"><span>Lead</span><span>105â€“130%</span></div><div class="utility-row"><span>Pad / FX</span><span>110â€“140%</span></div>
+              <p class="fig-cap">Width &gt; 100% puÃ² ridurre la compatibilitÃ  mono. I valori non descrivono â€œdove mettereâ€ un elemento: sono punti di verifica dopo sound design e panning.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 15 DECISIONI ============ -->
+      <section id="decisioni">
+        <h2>Come riconoscere cosa serve al tuo suono</h2>
+        <p>Prima di aggiungere un plugin, descrivi il problema con parole concrete. â€œNon suona proâ€ non Ã¨ una diagnosi; â€œil low-end scompare quando entra il kickâ€ lo Ã¨. Ogni riga della matrice Ã¨ un caso indipendente: parti dal sintomo, verifica la diagnosi, poi prova lâ€™azione.</p>
+
+        <div class="fig">
+          <div class="fig-title">Matrice diagnostica â€” sintomo â†’ diagnosi â†’ azione</div>
+          <div class="flowchart">
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Mix fangoso, chiuso, senza separazione</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Accumulo 150-500 Hz su troppe tracce</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>EQ sottrattiva (EQ Eight) + HPF ragionati su pad/FX/perc</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Elemento non si sente, ma alzandolo peggiora tutto</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Mascheramento o layer quasi identici</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Taglia la zona concorrente, poi boost additivo +1/+2 dB; se uguale â†’ cambia/rimuovi il layer in sorgente</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Debole su laptop, ma il low-end Ã¨ giÃ  forte</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Mancano armoniche, non sub</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Saturator o Roar in parallelo â€” NON alzare 40-80 Hz</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Picchi irregolari, la parte sparisce a tratti</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Dinamica incoerente</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Compressor moderato; se Ã¨ UNA nota â†’ clip gain / MIDI / envelope</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Kick e bass si scontrano, il drop perde impatto</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Sovrapposizione di tempo e/o fondamentale</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Ruoli in sorgente â†’ EQ separazione â†’ sidechain; se persiste â†’ pattern/note/sample</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Mix duro, affaticante, â€œdigitaleâ€</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Risonanze/accumulo 2.5-8 kHz (hat, clap, lead, FX)</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Cerca in solo, decidi in contesto: notch -2/-5 dB sulla sorgente, mai sul master</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Grande in stereo, collassa in mono</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Width eccessivo o layer fuori fase</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Utility Width 0% per diagnosi â†’ restringi/sostituisci il layer; low-end centrato</p></div>
+            </div>
+            <div class="fc-row">
+              <div class="fc-box sym"><h4>Sintomo</h4><p>Tanti plugin, nessun miglioramento reale</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box dia"><h4>Diagnosi</h4><p>Il problema Ã¨ sample / sound design / arrangiamento</p></div>
+              <div class="fc-arrow">â†’</div>
+              <div class="fc-box fix"><h4>Azione</h4><p>Bypassa tutto, cambia sorgente, accorcia code, elimina layer â€” il mix non ripara scelte di produzione</p></div>
+            </div>
+          </div>
+        </div>
+
+        <ol class="flow">
+          <li><strong>Ordine diagnostico di default:</strong> Sorgente â†’ Bilanciamento â†’ EQ sottrattiva â†’ Dinamica â†’ Saturazione â†’ EQ additiva â†’ Stereo. Puoi cambiare lâ€™ordine per sound design, ma parti sapendo quale problema stai risolvendo.</li>
+          <li><strong>Test del bypass:</strong> ogni plugin deve superare il confronto on/off a volume pareggiato. Se vince solo il volume, il plugin sta mentendo.</li>
+          <li><strong>Test del mute:</strong> se togliendo un elemento il mix non peggiora, quellâ€™elemento non ha un ruolo: riducilo, spostalo o eliminalo.</li>
+        </ol>
+      </section>
+
+      <!-- ============ 16 RIVERBERI E DELAY PER SORGENTE ============ -->
+      <section id="spatial-fx-guide">
+        <h2>Riverberi e delay per house / techno</h2>
+        <p>Non esistono valori obbligatori, ma alcune configurazioni ricorrono perchÃ© risolvono problemi prevedibili: una room corta unisce le drums, una plate mantiene in evidenza clap e voce, una hall crea profonditÃ  e un delay sincronizzato aggiunge movimento senza riempire ogni spazio. Considera i valori seguenti come <strong>intervalli di partenza</strong>, non come preset da applicare automaticamente.</p>
+
+        <div class="note">
+          <strong>â€œDrum Roomâ€ in Ableton:</strong> Ã¨ un preset del Reverb classico, non un algoritmo universale. In <code>Hybrid Reverb</code> cerca una IR nella categoria <code>Made for Drums</code> oppure usa <code>Quartz</code>, adatto a drums e segnali con transienti chiari. Su una return imposta sempre il device al <strong>100% wet</strong> e controlla la quantitÃ  con send e fader della return.
+        </div>
+
+        <h3>Return rack consigliato</h3>
+        <div class="return-rack" aria-label="Cinque return track consigliate">
+          <article class="return-card" style="--return-color:#58d6b4">
+            <span class="return-id">A</span><h3>Drum Room</h3><p>Cohesione e profonditÃ  corta per drum machine e sample.</p>
+            <dl class="return-settings"><div><dt>Device</dt><dd>Made for Drums / Quartz / Drum Room</dd></div><div><dt>Decay</dt><dd>0,35â€“0,90 s</dd></div><div><dt>Pre</dt><dd>5â€“20 ms</dd></div><div><dt>EQ</dt><dd>HPF 200â€“350 Hz Â· LPF 7â€“10 kHz</dd></div><div><dt>Send</dt><dd>Kick minimo Â· clap/tom medio Â· hat/perc bassoâ€“medio</dd></div></dl>
+          </article>
+          <article class="return-card" style="--return-color:#ff9f6e">
+            <span class="return-id">B</span><h3>Short Plate</h3><p>Presenza controllata per clap, snare, vocal chop e lead.</p>
+            <dl class="return-settings"><div><dt>Device</dt><dd>Plate IR / Quartz</dd></div><div><dt>Decay</dt><dd>0,70â€“1,50 s</dd></div><div><dt>Pre</dt><dd>10â€“30 ms</dd></div><div><dt>EQ</dt><dd>HPF 180â€“300 Hz Â· LPF 6â€“10 kHz</dd></div><div><dt>Uso</dt><dd>PiÃ¹ evidente sul clap, piÃ¹ discreta su lead e voce</dd></div></dl>
+          </article>
+          <article class="return-card" style="--return-color:#b48cff">
+            <span class="return-id">C</span><h3>Long Hall</h3><p>Spazio profondo per pad, texture, FX e sezioni di break.</p>
+            <dl class="return-settings"><div><dt>Device</dt><dd>Hybrid Reverb Â· Dark Hall</dd></div><div><dt>Decay</dt><dd>2â€“6 s</dd></div><div><dt>Pre</dt><dd>15â€“40 ms</dd></div><div><dt>EQ</dt><dd>HPF 250â€“500 Hz Â· LPF 5â€“10 kHz</dd></div><div><dt>Duck</dt><dd>2â€“6 dB GR dal kick o dal drum bus</dd></div></dl>
+          </article>
+          <article class="return-card" style="--return-color:#69a9ff">
+            <span class="return-id">D</span><h3>Tempo Delay</h3><p>Movimento pulito per vocal, lead, stab e percussioni.</p>
+            <dl class="return-settings"><div><dt>Device</dt><dd>Delay Â· 100% wet</dd></div><div><dt>Time</dt><dd>1/16D Â· 1/8T Â· 1/8D Â· 1/4</dd></div><div><dt>Feedback</dt><dd>15â€“35%</dd></div><div><dt>EQ</dt><dd>HPF 200â€“500 Hz Â· LPF 4â€“8 kHz</dd></div><div><dt>Stereo</dt><dd>Ping Pong opzionale; mono-check obbligatorio</dd></div></dl>
+          </article>
+          <article class="return-card" style="--return-color:#ffbf69">
+            <span class="return-id">E</span><h3>Dub Echo</h3><p>Feedback espressivo per dub techno, acid, stab e transizioni.</p>
+            <dl class="return-settings"><div><dt>Device</dt><dd>Echo Â· 100% wet</dd></div><div><dt>Time</dt><dd>1/8D oppure 1/4</dd></div><div><dt>Feedback</dt><dd>35â€“65%, automatizzato</dd></div><div><dt>EQ</dt><dd>HPF 300â€“600 Hz Â· LPF 3â€“6 kHz</dd></div><div><dt>Safety</dt><dd>Controlla runaway feedback e picchi della return</dd></div></dl>
+          </article>
+        </div>
+
+        <div class="warning"><strong>Sigle:</strong> <code>D</code> = puntata, <code>T</code> = terzina. Non esiste una percentuale di send standard: il livello dipende dalla sorgente e dal fader della return. Alza finchÃ© percepisci chiaramente lâ€™effetto, poi riducilo finchÃ© sostiene il suono senza diventare protagonista.</div>
+
+        <h3>Scelta rapida per sorgente</h3>
+        <div class="source-guide" role="table" aria-label="Riverberi e delay consigliati per sorgente">
+          <div class="source-head" role="row"><span role="columnheader">Sorgente</span><span role="columnheader">Riverbero</span><span role="columnheader">Delay</span><span role="columnheader">Controllo decisivo</span></div>
+          <div class="source-row" role="row"><div role="rowheader">Kick</div><div data-label="Riverbero"><span class="source-label">Riverbero</span>Dry o micro-room <strong>0,15â€“0,40 s</strong></div><div data-label="Delay"><span class="source-label">Delay</span>Di norma nessuno</div><div data-label="Controllo"><span class="source-label">Controllo</span>Send minimo; le code lunghe appartengono al rumble</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Rumble techno</div><div><span class="source-label">Riverbero</span><strong>1,5â€“3,5 s</strong> su return dedicata</div><div><span class="source-label">Delay</span>Non necessario</div><div><span class="source-label">Controllo</span>HPF 35â€“60 Hz Â· LPF 3â€“8 kHz Â· sidechain 4â€“10 dB</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Clap / Snare</div><div><span class="source-label">Riverbero</span>Room <strong>0,4â€“0,9 s</strong> o Plate <strong>0,7â€“1,5 s</strong></div><div><span class="source-label">Delay</span>1/8D o 1/4 Â· feedback 10â€“25%</div><div><span class="source-label">Controllo</span>La Plate dÃ  presenza; la Room lega il drum kit</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Hi-hat</div><div><span class="source-label">Riverbero</span>Room <strong>0,2â€“0,6 s</strong></div><div><span class="source-label">Delay</span>1/16D o 1/8T Â· feedback 5â€“20%</div><div><span class="source-label">Controllo</span>HPF return 500 Hz o piÃ¹; evita top-end granuloso</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Perc / Toms</div><div><span class="source-label">Riverbero</span>Room <strong>0,4â€“1 s</strong></div><div><span class="source-label">Delay</span>1/8D o 1/4T Â· feedback 15â€“30%</div><div><span class="source-label">Controllo</span>Usa il delay per call-and-response, non su ogni colpo</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Sub bass</div><div><span class="source-label">Riverbero</span>Quasi sempre dry</div><div><span class="source-label">Delay</span>Nessuno sul sub pieno</div><div><span class="source-label">Controllo</span>Separa le armoniche sopra 150â€“250 Hz prima degli FX</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Mid bass / Acid</div><div><span class="source-label">Riverbero</span>Room <strong>0,3â€“0,8 s</strong> sulle armoniche</div><div><span class="source-label">Delay</span>1/16â€“1/8D, filtrato</div><div><span class="source-label">Controllo</span>HPF 150â€“300 Hz; sidechain se invade il kick</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Stab / Chords</div><div><span class="source-label">Riverbero</span>Room/Plate <strong>0,5â€“1,5 s</strong></div><div><span class="source-label">Delay</span>1/8D o 1/4 Â· feedback 20â€“40%</div><div><span class="source-label">Controllo</span>Dub techno: feedback piÃ¹ alto, filtrato e automatizzato</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Lead / Pluck</div><div><span class="source-label">Riverbero</span>Plate <strong>0,8â€“2 s</strong> Â· pre 15â€“35 ms</div><div><span class="source-label">Delay</span>1/8D o 1/4 Â· feedback 15â€“35%</div><div><span class="source-label">Controllo</span>Il pre-delay conserva il transient e porta avanti il lead</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Pad / Atmos</div><div><span class="source-label">Riverbero</span>Hall <strong>2â€“6 s</strong></div><div><span class="source-label">Delay</span>1/4, 1/2 o puntate Â· feedback 20â€“50%</div><div><span class="source-label">Controllo</span>Filtra, ducka e riduci il send quando il drop si riempie</div></div>
+          <div class="source-row" role="row"><div role="rowheader">Vocal / Chop</div><div><span class="source-label">Riverbero</span>Plate <strong>1â€“2,5 s</strong> Â· pre 20â€“60 ms</div><div><span class="source-label">Delay</span>Slap 80â€“140 ms, 1/8D o 1/4</div><div><span class="source-label">Controllo</span>HPF 150â€“300 Hz; LPF/de-ess della return se sibila</div></div>
+          <div class="source-row" role="row"><div role="rowheader">FX / Impact</div><div><span class="source-label">Riverbero</span>Hall <strong>2â€“8 s</strong>, reverse o gated</div><div><span class="source-label">Delay</span>1/4â€“1/2 Â· feedback automatizzato</div><div><span class="source-label">Controllo</span>Evita che il sub dellâ€™impact alimenti una coda lunga</div></div>
+        </div>
+
+        <h3>Riferimento immediato â€” 124 BPM</h3>
+        <div class="tempo-reference" aria-label="Tempi musicali a 124 BPM">
+          <div><strong>1/16</strong><span>120,97 ms</span></div><div><strong>1/16D</strong><span>181,45 ms</span></div><div><strong>1/8T</strong><span>161,29 ms</span></div><div><strong>1/8</strong><span>241,94 ms</span></div><div><strong>1/8D</strong><span>362,90 ms</span></div><div><strong>1/4</strong><span>483,87 ms</span></div><div><strong>1/4D</strong><span>725,81 ms</span></div><div><strong>1/2</strong><span>967,74 ms</span></div><div><strong>1 bar</strong><span>1.935,48 ms</span></div>
+        </div>
+        <div class="tip"><strong>Workflow:</strong> scegli prima la funzione della return e il valore musicale; usa poi il calcolatore qui sotto per ottenere millisecondi e Hz al BPM reale. Infine regola send, filtri e ducking ascoltando lâ€™intero mix.</div>
+        <p class="fig-cap source-links">Riferimenti tecnici: <a href="https://www.ableton.com/en/live-manual/12/live-audio-effect-reference/" target="_blank" rel="noopener">Ableton Live 12 â€” Audio Effects</a> Â· <a href="https://www.ableton.com/en/live-manual/12/mixing/" target="_blank" rel="noopener">Return Tracks</a> Â· <a href="https://www.fabfilter.com/learn/reverb/how-to-use-reverb" target="_blank" rel="noopener">FabFilter â€” uso del riverbero</a> Â· <a href="https://www.izotope.com/en/learn/essential-tips-for-using-reverb-on-vocals" target="_blank" rel="noopener">iZotope â€” vocal reverb</a>.</p>
+      </section>
+
+      <!-- ============ 17 DELAY & REVERB CALCULATOR ============ -->
+      <section id="tempo-calculator">
+        <h2>Delay &amp; Reverb Time Calculator</h2>
+        <p>Inserisci il BPM del progetto per ricavare delay sincronizzati, frequenze equivalenti per LFO/modulazioni e quattro punti di partenza per il riverbero. Il calcolo assume un tempo in <strong>4/4</strong>: usalo come riferimento musicale, poi rifinisci decay e pre-delay a orecchio nel contesto.</p>
+
+        <div class="calc-shell">
+          <div class="tempo-console">
+            <div class="tempo-input-panel">
+              <label for="fx-bpm">Tempo del progetto</label>
+              <div class="bpm-input-wrap">
+                <input id="fx-bpm" type="number" min="20" max="400" step="0.1" value="124" inputmode="decimal" autocomplete="off" aria-describedby="bpm-help bpm-error">
+                <span class="bpm-unit">BPM</span>
+              </div>
+              <p id="bpm-help" class="fig-cap">Intervallo ammesso: 20â€“400 BPM.</p>
+              <p id="bpm-error" class="calc-error" role="alert" hidden>Inserisci un valore compreso tra 20 e 400 BPM.</p>
+            </div>
+            <div class="beat-anchor" aria-live="polite">
+              <span>Durata di 1 beat Â· 1/4</span>
+              <strong id="quarter-readout">483,87 ms</strong>
+              <small id="bar-readout">1 bar Â· 1.935,48 ms</small>
+            </div>
+          </div>
+          <div class="beat-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+          <div class="calc-section-title">
+            <h3>Riverbero sincronizzato</h3>
+            <span>Decay = tempo totale âˆ’ pre-delay</span>
+          </div>
+          <div id="reverb-results" class="reverb-grid" aria-label="Tempi di riverbero calcolati"></div>
+
+          <div class="calc-section-title">
+            <h3>Delay per valore musicale</h3>
+            <span>Tempo in millisecondi e frequenza equivalente</span>
+          </div>
+          <div class="delay-grid" role="table" aria-label="Tempi delay normali, puntati e terzinati">
+            <div class="delay-head" role="row">
+              <span role="columnheader">Nota</span><span role="columnheader">Normale</span><span role="columnheader">Puntata Â· Ã—1,5</span><span role="columnheader">Terzina Â· Ã—2/3</span>
+            </div>
+            <div id="delay-rows" role="rowgroup"></div>
+          </div>
+
+          <div class="calc-formula" aria-label="Formule utilizzate">
+            <div><strong>1/4</strong><code>60.000 Ã· BPM</code></div>
+            <div><strong>Puntata</strong><code>tempo Ã— 1,5</code></div>
+            <div><strong>Terzina</strong><code>tempo Ã— 2/3</code></div>
+            <div><strong>Frequenza</strong><code>1.000 Ã· ms</code></div>
+          </div>
+          <p class="fig-cap">I preset Hall, Large Room, Small Room e Tight Ambience descrivono durate musicali, non modelli acustici universali. Se la coda copre il colpo successivo, accorcia il totale o usa ducking; se il suono resta troppo frontale, prova un pre-delay diverso prima di aumentare il wet.</p>
+          <p id="calc-status" class="sr-only" aria-live="polite"></p>
+          <noscript><p class="warning">Il calcolatore richiede JavaScript, ma il resto della guida rimane consultabile offline.</p></noscript>
+        </div>
+      </section>
+
+      <!-- ============ 18 CHECKLIST ============ -->
+      <section id="mix-checklist">
+        <h2>Checklist di mix</h2>
+        <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Controllo</th><th>Domanda pratica</th><th>Azione se la risposta Ã¨ no</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Headroom</td><td>Il master non clippa e ha un margine operativo coerente (spesso circa 6-8 dB sui picchi)?</td><td>Riduci clip gain, strumenti o gruppi; non usare il limiter per nascondere il problema.</td></tr>
+            <tr><td>Picchi canali</td><td>I canali sono nei rispettivi intervalli senza essere stati normalizzati tutti allo stesso valore?</td><td>Controlla il meter post-device, il livello medio e i processori che aggiungono gain.</td></tr>
+            <tr><td>Kick / Bass</td><td>Ogni colpo di kick Ã¨ leggibile e il basso torna naturale?</td><td>Timing, sidechain, fondamentale, sovrapposizione 50-150 Hz.</td></tr>
+            <tr><td>Mono</td><td>Il groove resta pieno con <code>Utility</code> Width 0%?</td><td>Riduci width, elimina layer fuori fase, centra il low-end.</td></tr>
+            <tr><td>Medi</td><td>Lead, vocal e clap hanno ruoli distinti?</td><td>Sottrazione selettiva o semplifica lâ€™arrangiamento.</td></tr>
+            <tr><td>Top-end</td><td>Hat, FX e clap chiari senza affaticare?</td><td>Risonanze 3-8 kHz e layer ridondanti.</td></tr>
+            <tr><td>Bypass</td><td>Ogni plugin migliora davvero a volume pareggiato?</td><td>Bypassalo o rifai la scelta dalla sorgente.</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="tip">
+          <strong>Metodo finale:</strong> pausa, volume basso, ascolto completo senza guardare <code>Spectrum</code>. Se kick, basso, hook e groove sono chiari a basso volume, il mix sta andando nella direzione giusta.
+        </div>
+      </section>
+
+      <footer class="footer">
+        Guida pratica di arrangement e mix engineering per house, tech house, deep house, techno ed electro. Le strutture, i range e i valori indicati sono punti di partenza: calibra durata e linguaggio su reference comparabili, poi prendi le decisioni finali a orecchio e nel contesto del brano. La sezione mix usa device stock di Ableton Live 12; la disponibilitÃ  di Roar e Hybrid Reverb dipende dallâ€™edizione, con Saturator e Reverb come alternative. Limiting di loudness e delivery finale restano fuori dallâ€™ambito del premaster descritto qui.
+      </footer>
+    </main>
+  </div>
+  <script>
+    const bpmInput = document.getElementById('fx-bpm');
+    const quarterReadout = document.getElementById('quarter-readout');
+    const barReadout = document.getElementById('bar-readout');
+    const bpmError = document.getElementById('bpm-error');
+    const reverbResults = document.getElementById('reverb-results');
+    const delayRows = document.getElementById('delay-rows');
+    const calcStatus = document.getElementById('calc-status');
+
+    const delayNotes = [
+      { label:'1/1', detail:'1 bar', beats:4 },
+      { label:'1/2', detail:'2 beat', beats:2 },
+      { label:'1/4', detail:'1 beat', beats:1 },
+      { label:'1/8', detail:'1/2 beat', beats:.5 },
+      { label:'1/16', detail:'1/4 beat', beats:.25 },
+      { label:'1/32', detail:'1/8 beat', beats:.125 },
+      { label:'1/64', detail:'1/16 beat', beats:.0625 },
+      { label:'1/128', detail:'1/32 beat', beats:.03125 },
+      { label:'1/256', detail:'1/64 beat', beats:.015625 },
+      { label:'1/512', detail:'1/128 beat', beats:.0078125 }
+    ];
+    const reverbPresets = [
+      { name:'Hall', detail:'2 bar', totalBeats:8, preDelayBeats:.125 },
+      { name:'Large Room', detail:'1 bar', totalBeats:4, preDelayBeats:.0625 },
+      { name:'Small Room', detail:'1/2 nota', totalBeats:2, preDelayBeats:.03125 },
+      { name:'Tight Ambience', detail:'1/4 nota', totalBeats:1, preDelayBeats:.0078125 }
+    ];
+    const numberFormat = new Intl.NumberFormat('it-IT', { maximumFractionDigits:2 });
+    const formatNumber = value => numberFormat.format(Math.round(value * 100) / 100);
+    const formatDelay = milliseconds => `${formatNumber(milliseconds)} ms`;
+    const formatRate = milliseconds => `${formatNumber(1000 / milliseconds)} Hz`;
+
+    function delayCell(kind, milliseconds) {
+      return `<div class="delay-value-cell" role="cell"><span class="delay-kind">${kind}</span><strong>${formatDelay(milliseconds)}</strong><span>${formatRate(milliseconds)}</span></div>`;
+    }
+
+    function updateTempoCalculator() {
+      const bpm = Number(bpmInput.value);
+      const valid = Number.isFinite(bpm) && bpm >= 20 && bpm <= 400;
+      bpmInput.setAttribute('aria-invalid', String(!valid));
+      bpmError.hidden = valid;
+
+      if (!valid) {
+        quarterReadout.textContent = 'â€”';
+        barReadout.textContent = 'Inserisci un BPM valido';
+        reverbResults.replaceChildren();
+        delayRows.replaceChildren();
+        calcStatus.textContent = 'Valore BPM non valido.';
+        return;
+      }
+
+      const quarterMs = 60000 / bpm;
+      quarterReadout.textContent = formatDelay(quarterMs);
+      barReadout.textContent = `1 bar Â· ${formatDelay(quarterMs * 4)}`;
+
+      reverbResults.innerHTML = reverbPresets.map(preset => {
+        const total = quarterMs * preset.totalBeats;
+        const preDelay = quarterMs * preset.preDelayBeats;
+        const decay = total - preDelay;
+        return `<article class="reverb-card"><h4>${preset.name}</h4><span>${preset.detail}</span><div class="reverb-values"><div class="reverb-value"><span>Pre-delay</span><strong>${formatDelay(preDelay)}</strong></div><div class="reverb-value"><span>Decay</span><strong>${formatDelay(decay)}</strong></div><div class="reverb-value"><span>Totale</span><strong>${formatDelay(total)}</strong></div></div></article>`;
+      }).join('');
+
+      delayRows.innerHTML = delayNotes.map(note => {
+        const normal = quarterMs * note.beats;
+        return `<div class="delay-row" role="row"><div class="delay-note" role="rowheader"><strong>${note.label}</strong><span>${note.detail}</span></div>${delayCell('Normale', normal)}${delayCell('Puntata', normal * 1.5)}${delayCell('Terzina', normal * 2 / 3)}</div>`;
+      }).join('');
+
+      calcStatus.textContent = `Calcoli aggiornati per ${formatNumber(bpm)} BPM.`;
+    }
+
+    bpmInput.addEventListener('input', updateTempoCalculator);
+    updateTempoCalculator();
+
+    const nav = document.querySelector('nav');
+    const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+    const sections = navLinks
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+
+        navLinks.forEach(link => {
+          const active = link.getAttribute('href') === `#${visible.target.id}`;
+          link.classList.toggle('is-active', active);
+          if (active) {
+            link.setAttribute('aria-current', 'location');
+            if (matchMedia('(max-width: 850px)').matches) {
+              const left = link.offsetLeft - (nav.clientWidth - link.clientWidth) / 2;
+              nav.scrollTo({ left, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+            }
+          } else link.removeAttribute('aria-current');
+        });
+      }, { rootMargin: '-15% 0px -70% 0px', threshold: [0, 0.25, 0.6] });
+
+      sections.forEach(section => observer.observe(section));
+    }
+  </script>
+</body>
+</html>
+
