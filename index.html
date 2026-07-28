@@ -135,6 +135,18 @@
     .range-segment.sub{color:var(--accent2)}.range-segment.mid{color:var(--vio)}.range-segment.shared{color:var(--warn)}
     .range-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
     .range-note{border-left:3px solid var(--accent2);padding:8px 10px;background:rgba(105,169,255,.07);font-size:.8rem;color:var(--muted)}
+    .kick-bass-deep{margin-top:34px;padding-top:30px;border-top:1px solid var(--line);scroll-margin-top:68px}
+    .deep-kicker{color:var(--warn);font:800 .72rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
+    .kick-bass-deep>h3{font-size:clamp(1.45rem,3vw,2rem);margin:8px 0 12px}
+    .kick-bass-deep>.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .phase-cycles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0}
+    .phase-cycle{padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);text-align:center}
+    .phase-cycle strong{display:block;color:var(--accent2);font:850 .95rem/1.2 ui-monospace,Menlo,Consolas,monospace}
+    .phase-cycle span{display:block;margin-top:6px;color:var(--muted);font-size:.75rem;line-height:1.45}
+    .analysis-chain{padding:13px 15px;border:1px dashed var(--accent2);border-radius:9px;background:rgba(105,169,255,.06);font:750 .82rem/1.65 ui-monospace,Menlo,Consolas,monospace;color:#dce9ff;overflow-wrap:anywhere}
+    .done-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:14px 0 0}
+    .done-list li{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);font-size:.82rem;color:var(--muted)}
+    .done-list li::before{content:"✓";color:var(--accent);font-weight:900;margin-right:8px}
 
     /* Meter CSS */
     .level-meter{padding-top:35px}
@@ -338,6 +350,25 @@
     }
     @media(max-width:640px){
       .grid,.stereo{grid-template-columns:1fr}
+      .kick-bass-deep>.grid{grid-template-columns:1fr}
+      .phase-cycles{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .done-list{grid-template-columns:1fr}
+      .kick-bass-deep .table-wrap{overflow:visible;border:0;background:transparent}
+      .kick-bass-deep table,.kick-bass-deep tbody{display:block;width:100%;min-width:0}
+      .kick-bass-deep thead{display:none}
+      .kick-bass-deep tbody{display:grid;gap:10px}
+      .kick-bass-deep tr{display:block;padding:8px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+      .kick-bass-deep td{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;padding:7px 5px;border:0;border-bottom:1px solid var(--line)}
+      .kick-bass-deep td:last-child{border-bottom:0}
+      .kick-bass-deep td::before{color:var(--accent2);font:800 .65rem/1.3 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.04em;text-transform:uppercase}
+      .objective-table td:nth-child(1)::before{content:"Test"}
+      .objective-table td:nth-child(2)::before{content:"Procedura"}
+      .objective-table td:nth-child(3)::before{content:"Segnale sano"}
+      .objective-table td:nth-child(4)::before{content:"Da indagare"}
+      .diagnosis-table td:nth-child(1)::before{content:"Sintomo"}
+      .diagnosis-table td:nth-child(2)::before{content:"Causa"}
+      .diagnosis-table td:nth-child(3)::before{content:"Verifica"}
+      .diagnosis-table td:nth-child(4)::before{content:"Azione"}
       nav{grid-template-columns:1fr}
       .hero{padding:22px}
       .element{padding:17px}
@@ -415,6 +446,7 @@
         <a href="#hihat">B6 · Hi-hat</a>
         <a href="#perc">B7 · Percussioni / Toms</a>
         <a href="#bass">B8 · Bassline</a>
+        <a href="#kick-bass-deep-dive">B8.1 · Kick ↔ basso</a>
         <a href="#lead">B9 · Lead / Stab</a>
         <a href="#pad">B10 · Pad</a>
         <a href="#voci">B11 · Voci / Vocal chop</a>
@@ -1245,6 +1277,102 @@
           <h3>Compressione, saturazione e stereo</h3>
           <p>Sidechain meno profondo del sub: 3:1-6:1, attack 1-5 ms, release 80-180 ms, 2-6 dB. <code>Saturator</code> +2 / +5 dB o <code>Roar</code> Mix 10-30% per presenza. Se allarghi a 105-125%, proteggi prima l’area sotto 150-250 Hz con Bass Mono o con un rack multibanda, poi verifica in mono.</p>
         </div>
+
+        <article id="kick-bass-deep-dive" class="kick-bass-deep">
+          <div class="deep-kicker">B8.1 · Protocollo di controllo</div>
+          <h3>Deep dive: kick ↔ basso</h3>
+          <p>Non esiste un numero che certifichi da solo un low-end “corretto”. La relazione è solida quando il kick conserva un attacco leggibile, il basso recupera con il groove previsto, la somma non collassa su alcune note e il bus mantiene headroom senza dipendere dal limiter. L’orecchio decide l’estetica; le misure servono a rendere il risultato <strong>ripetibile, diagnosticabile e traducibile</strong>.</p>
+
+          <div class="warning"><strong>Confine degli strumenti:</strong> un correlation meter L/R misura la compatibilità fra canale sinistro e destro. Se kick e basso sono entrambi mono e centrali, non descrive la loro relazione reciproca. Per confrontarli servono un oscilloscopio a due ingressi, un analizzatore con sidechain esterna oppure tre passaggi resampled: kick, basso e somma.</div>
+
+          <h4>1 · Assegna il ruolo prima di processare</h4>
+          <div class="grid">
+            <div class="card"><h3>Frequenza</h3><p>Trova la fondamentale reale, non quella attesa dal nome del sample. Decidi chi porta peso tra circa 40-70 Hz e chi completa tra 70-120 Hz. Possono sovrapporsi, ma non devono mantenere entrambi una coda dominante nello stesso intervallo.</p></div>
+            <div class="card"><h3>Tempo</h3><p>Definisci chi occupa i primi 20-80 ms e quando il basso deve tornare. Un kick lungo più un sub legato richiede più sottrazione temporale di un kick corto con bassline offbeat.</p></div>
+            <div class="card"><h3>Traduzione</h3><p>Il sub dà peso; le armoniche tra circa 120 Hz e 1 kHz rendono il basso leggibile su speaker piccoli. Non aumentare 40-80 Hz per risolvere un problema che appartiene alle armoniche.</p></div>
+          </div>
+
+          <h4>2 · Timing e fase: quanto pesa un millisecondo</h4>
+          <p>Uno spostamento temporale ruota la fase in modo diverso per ogni frequenza: <code>φ = 360° × f × Δt / 1000</code>, con <code>f</code> in Hz e <code>Δt</code> in ms. Per questo un nudge che migliora 50 Hz può peggiorare 90 Hz o funzionare solo su una nota della bassline.</p>
+          <div class="phase-cycles" aria-label="Durata del ciclo e spostamenti di fase alle frequenze basse">
+            <div class="phase-cycle"><strong>40 Hz</strong><span>ciclo 25 ms<br>90° 6,25 ms<br>180° 12,50 ms</span></div>
+            <div class="phase-cycle"><strong>50 Hz</strong><span>ciclo 20 ms<br>90° 5,00 ms<br>180° 10,00 ms</span></div>
+            <div class="phase-cycle"><strong>60 Hz</strong><span>ciclo 16,67 ms<br>90° 4,17 ms<br>180° 8,33 ms</span></div>
+            <div class="phase-cycle"><strong>80 Hz</strong><span>ciclo 12,50 ms<br>90° 3,13 ms<br>180° 6,25 ms</span></div>
+            <div class="phase-cycle"><strong>100 Hz</strong><span>ciclo 10 ms<br>90° 2,50 ms<br>180° 5,00 ms</span></div>
+          </div>
+          <p class="fig-cap">Valori matematici per sinusoidi ideali. Kick e bassi reali sono transitori, armonici e variabili: non usare 0°, 90° o 180° come target di mix.</p>
+          <ul>
+            <li><strong>Invertire la polarità</strong> moltiplica l’intera forma d’onda per -1: è una scelta 0/180°, non un allineamento temporale.</li>
+            <li><strong>Spostare la traccia</strong> modifica insieme fase e groove. Prova micro-spostamenti in entrambe le direzioni, sempre su tutte le note e non solo sul primo kick.</li>
+            <li><strong>Phase rotation / all-pass</strong> può cambiare la relazione senza alterare direttamente la curva di ampiezza, ma è l’ultimo intervento: prima sistema sorgente, envelope e timing.</li>
+            <li><strong>Oscillatore free-running:</strong> se il synth non retriggera la fase, l’interazione può cambiare a ogni nota. Per un sub molto stabile valuta phase retrigger; per un basso vivo controlla il caso peggiore, non un singolo colpo fortunato.</li>
+          </ul>
+
+          <h4>3 · Costruisci una catena di sola analisi in Ableton</h4>
+          <div class="analysis-chain">EQ Eight: HP 20-25 Hz + LP 140-160 Hz → Utility: Mono / Bass Mono audition → Spectrum: Block alto, scala log → meter peak/RMS del bus</div>
+          <ol>
+            <li>Scegli un loop di 8-16 bar che contenga <strong>ogni nota e articolazione</strong> importante del basso.</li>
+            <li>Bypassa limiter, clipper e makeup gain sul master. Mantieni identici fader, warp, oversampling e latenza durante tutti i confronti.</li>
+            <li>Registra tre passaggi allo stesso punto: <strong>K</strong> solo kick, <strong>B</strong> solo basso, <strong>K+B</strong> somma. Il resampling evita che il meter “ricordi” esecuzioni differenti.</li>
+            <li>In <code>Spectrum</code> usa <strong>Avg basso</strong> per vedere il transiente del kick e <strong>Avg più alto</strong> per leggere la regione sostenuta del basso. Max Hold aiuta a confrontare colpi ripetuti.</li>
+            <li>Per vedere entrambe le curve usa due analizzatori o uno spectrum con sidechain esterna. Per la fase inter-traccia usa un dual oscilloscope: la correlazione stereo del master non basta.</li>
+            <li>Ripeti il test in mono, a volume basso e su una reference pareggiata di livello. Disattiva la catena di analisi prima di esportare.</li>
+          </ol>
+
+          <h4>4 · Test oggettivi e loro interpretazione</h4>
+          <div class="table-wrap">
+            <table class="objective-table">
+              <thead><tr><th>Test</th><th>Procedura</th><th>Segnale sano</th><th>Segnale da indagare</th></tr></thead>
+              <tbody>
+                <tr><td>Somma 20-150 Hz</td><td>Confronta K, B e K+B con lo stesso filtro e la stessa finestra.</td><td>La banda cresce o si redistribuisce in modo coerente col groove.</td><td>K+B perde sistematicamente energia proprio durante la sovrapposizione.</td></tr>
+                <tr><td>Picco per colpo</td><td>Osserva kick identici mentre cambiano le note del basso.</td><td>Le variazioni seguono intenzionalmente note, velocity ed envelope.</td><td>Alcuni colpi diventano molto più deboli o generano picchi anomali senza motivo musicale.</td></tr>
+                <tr><td>Dual oscilloscope</td><td>Confronta le componenti lente attorno alla fondamentale dominante.</td><td>I cicli principali non si oppongono ripetutamente nel punto di massimo overlap.</td><td>Le semionde dominanti si cancellano sulle stesse note; non inseguire però l’allineamento visivo di ogni zero crossing.</td></tr>
+                <tr><td>Inviluppo di ducking</td><td>Guarda la gain reduction, non soltanto attack e release impostati.</td><td>Il minimo arriva dopo/attorno all’attacco del kick e il gain torna a zero prima del successivo accento di basso previsto.</td><td>Il basso resta schiacciato sul levare, pompa fra le note o recupera con uno scalino.</td></tr>
+                <tr><td>Mono low-band</td><td><code>Utility</code> in mono e Bass Mono audition tra 100-150 Hz come punto di partenza.</td><td>Peso e groove restano centrali; le armoniche stereo possono ridursi senza perdere la funzione.</td><td>Il sub sparisce, si sposta lateralmente o cambia livello in modo marcato.</td></tr>
+                <tr><td>Headroom</td><td>Controlla sample/true peak su low bus e master con limiter bypassato.</td><td>La somma crea picchi prevedibili e lascia il margine operativo scelto.</td><td>Il true peak sale molto ma il low-end non sembra crescere: cerca overlap, asimmetria o code troppo lunghe.</td></tr>
+                <tr><td>Multi-nota</td><td>Prova fondamentale, ottava e note realmente usate.</td><td>La relazione resta credibile nell’intero pattern.</td><td>La correzione funziona su una nota e fallisce sulle altre: timing fisso o fase di start non sono robusti.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note"><strong>Riferimento matematico, non target:</strong> due sinusoidi identiche e perfettamente in fase sommano circa <strong>+6 dB</strong>; due segnali non correlati di pari potenza circa <strong>+3 dB</strong>; due sinusoidi uguali e opposte possono cancellarsi. Un kick e un basso reali non sono sinusoidi identiche, quindi non cercare automaticamente +3 o +6 dB.</div>
+
+          <h4>5 · Ordine corretto degli interventi</h4>
+          <ol>
+            <li><strong>Sorgente:</strong> cambia kick, preset o ottava se le fondamentali sono incompatibili. È spesso la soluzione più trasparente.</li>
+            <li><strong>Envelope e note:</strong> accorcia tail del kick, release del sub o durata MIDI; sposta le note prima di aggiungere dinamica.</li>
+            <li><strong>Timing / polarità:</strong> prova polarità e micro-nudge A/B a volume pareggiato. Conserva solo ciò che migliora l’intero pattern.</li>
+            <li><strong>EQ sottrattivo:</strong> riduci la zona realmente concorrente; filtri ripidi o grandi tagli possono cambiare transiente e fase.</li>
+            <li><strong>Ducking:</strong> usa volume shaping, Compressor o dynamic EQ. Come partenza: 2-8 dB di riduzione, attack 0,1-5 ms e release 60-220 ms; il valore giusto è quello che disegna il recupero richiesto dal groove.</li>
+            <li><strong>Phase rotation / all-pass:</strong> rifinitura per problemi rimasti, controllata su tutte le note e con bypass level-matched.</li>
+          </ol>
+
+          <h4>6 · Diagnosi rapida</h4>
+          <div class="table-wrap">
+            <table class="diagnosis-table">
+              <thead><tr><th>Sintomo</th><th>Probabile causa</th><th>Prima verifica</th><th>Azione prioritaria</th></tr></thead>
+              <tbody>
+                <tr><td>Il kick sparisce solo su certe note</td><td>Relazione nota-dipendente o fase di start variabile</td><td>Multi-nota + dual scope</td><td>Retrigger del sub, envelope più corto o ducking dipendente dal kick</td></tr>
+                <tr><td>Il kick perde punch su ogni colpo</td><td>Overlap temporale o stessa fondamentale dominante</td><td>Passaggi K/B/K+B in 20-150 Hz</td><td>Accorcia le code, assegna le bande, poi sidechain</td></tr>
+                <tr><td>Il master picca ma il fondo resta debole</td><td>Somma poco efficiente, asimmetria o armoniche non utili</td><td>Peak contro RMS in banda e forma d’onda</td><td>Envelope/phase rotation; non limitare più forte</td></tr>
+                <tr><td>Il basso torna troppo tardi</td><td>Release del ducking eccessiva</td><td>Osserva quando la gain reduction ritorna a 0 dB</td><td>Riduci release o ridisegna la curva rispetto alle note</td></tr>
+                <tr><td>Il correlation meter è positivo ma il low-end è debole</td><td>Il meter sta misurando L/R, non kick contro basso</td><td>Analisi inter-traccia o resampling</td><td>Ignora quel meter per questa diagnosi specifica</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Definition of done</h4>
+          <ul class="done-list">
+            <li>Ogni kick importante resta leggibile con tutte le note reali del basso.</li>
+            <li>La banda 20-150 Hz non collassa in modo sistematico durante l’overlap.</li>
+            <li>Il ducking recupera prima del prossimo accento senza gradini o click.</li>
+            <li>Il low-end resta stabile in mono; lo stereo utile vive soprattutto nelle armoniche.</li>
+            <li>Il master conserva headroom con limiter e clipper bypassati.</li>
+            <li>Il risultato traduce su monitor, cuffie e speaker piccoli senza aggiungere sub per compensazione.</li>
+          </ul>
+
+          <p class="source-links">Riferimenti tecnici: <a href="https://www.ableton.com/en/live-manual/12/live-audio-effect-reference/" target="_blank" rel="noopener">Ableton Live 12 — Compressor, Spectrum e Utility</a> · <a href="https://www.fabfilter.com/help/pro-q/support/externalsidechaining" target="_blank" rel="noopener">FabFilter — spectrum con sidechain esterna</a> · <a href="https://www.fabfilter.com/help/pro-q/using/processingmode" target="_blank" rel="noopener">FabFilter — fase e modalità EQ</a> · <a href="https://www.izotope.com/en/learn/hidden-mastering-features-in-ozone" target="_blank" rel="noopener">iZotope — limiti e uso del correlation meter</a>.</p>
+        </article>
       </section>
 
       <!-- ============ 09 LEAD ============ -->
