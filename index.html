@@ -204,6 +204,12 @@
     .node.opt{border-style:dashed;opacity:.75}
     .node.bus{border-color:var(--accent);color:#c5f7ea}
     .arr{color:var(--muted);font-size:1.1rem}
+    .chain-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+    .chain-choice{--choice-color:var(--accent2);border:1px solid var(--line);border-top:3px solid var(--choice-color);border-radius:10px;padding:14px;background:#10192b}
+    .chain-choice.api{--choice-color:var(--warn)}
+    .chain-choice-tag{display:block;margin-bottom:5px;color:var(--choice-color);font:850 .7rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+    .chain-choice h4{margin:0 0 7px;color:#fff;font-size:.98rem}
+    .chain-choice p{margin:0;color:var(--muted);font-size:.84rem}
     .table-wrap{max-width:100%;overflow-x:auto}
 
     /* Arrangement timeline */
@@ -370,6 +376,7 @@
     }
     @media(max-width:640px){
       .grid,.stereo{grid-template-columns:1fr}
+      .chain-choice-grid{grid-template-columns:1fr}
       .kick-bass-deep>.grid{grid-template-columns:1fr}
       .phase-cycles{grid-template-columns:repeat(2,minmax(0,1fr))}
       .done-list{grid-template-columns:1fr}
@@ -431,7 +438,7 @@
       :root{--bg:#fff;--panel:#fff;--panel2:#f3f5f7;--text:#111;--muted:#4b5563;--line:#cbd5e1;--code:#eef2f7}
       body{background:#fff;color:#111;font-size:10pt}
       aside,.skip-link{display:none}
-      .layout{display:block}.hero,.card,.element,.fig,.calc-shell,table{box-shadow:none;break-inside:avoid}
+      .layout{display:block}.hero,.card,.element,.fig,.calc-shell,.chain-choice,table{box-shadow:none;break-inside:avoid}
       main{width:100%;padding:0}.hero{margin-bottom:18px}.hero h1{font-size:24pt}h2{margin-top:28px}
       code,.chain{color:#123f36}.node{color:#16395f;background:#f3f6fa}.footer{color:#374151}
     }
@@ -1510,6 +1517,40 @@
             <li><strong>Drum Buss:</strong> Drive 2-10%, Crunch basso, Damp per top-end in eccesso, Transients 0/+10. Boom con estrema cautela: può distruggere il rapporto kick/bass.</li>
             <li><strong>Saturator:</strong> +0.5 / +2 dB se sterile. Transients schiacciati → torna indietro.</li>
           </ul>
+
+          <h3>Alternativa ibrida: Waves + Ableton</h3>
+          <p>Mantieni i device stock per trim, correzione e verifica; sostituisci <code>Glue Compressor</code> con <strong>un solo</strong> compressore Waves. La scelta dipende dal problema, non dal desiderio di riempire la catena.</p>
+          <div class="chainviz" aria-label="Chain ibrida consigliata per il drum bus">
+            <span class="node bus">DRUM GROUP</span><span class="arr">→</span>
+            <span class="node">Utility (trim)</span><span class="arr">→</span>
+            <span class="node opt">EQ Eight</span><span class="arr">→</span>
+            <span class="node">SSLComp oppure API 2500</span><span class="arr">→</span>
+            <span class="node opt">Abbey Road Saturator</span><span class="arr">→</span>
+            <span class="node">Utility</span><span class="arr">→</span>
+            <span class="node opt">Spectrum</span>
+          </div>
+
+          <div class="chain-choice-grid" aria-label="Scelta del compressore Waves per il drum bus">
+            <article class="chain-choice">
+              <span class="chain-choice-tag">A · Glue regolare</span>
+              <h4>SSL G-Master Buss Compressor</h4>
+              <p>Ratio 2:1, attack 10 o 30 ms, release 0.1/0.3 s oppure Auto. Parti con SC Filter tra 60 e 120 Hz e regola la soglia per 1-3 dB di GR. Se il kick perde attacco, allunga l’attack, riduci la GR o bypassa.</p>
+            </article>
+            <article class="chain-choice api">
+              <span class="chain-choice-tag">B · Punch controllato</span>
+              <h4>API 2500</h4>
+              <p>Ratio 2:1, attack 10 o 30 ms, release 0.1/0.2/0.5 s, Knee Med o Soft, Type New/Feed Forward e Thrust Norm come base. Se il low-end fa pompare il detector, prova Thrust Med; resta entro 1-3 dB di GR.</p>
+            </article>
+          </div>
+
+          <ul>
+            <li><strong>Utility iniziale:</strong> usa il gain per alimentare il compressore in modo coerente; non usarlo per ottenere più loudness. Pareggia poi il volume in uscita per il confronto on/off.</li>
+            <li><strong>Abbey Road Saturator:</strong> opzionale. Parti con Compander Blend a 0, console TG, Gain nella metà inferiore e Mix 5-15%. Se hat e clap diventano granulosi o il kick si accorcia, riduci il Mix o rimuovilo.</li>
+            <li><strong>Regola di arresto:</strong> se SSLComp e API 2500 sembrano entrambi necessari, torna alle singole tracce. Sul drum bus devono risolvere un solo obiettivo verificabile.</li>
+          </ul>
+
+          <p class="source-links">Manuali e schede ufficiali: <a href="https://www.waves.com/plugins/ssl-g-master-buss-compressor" target="_blank" rel="noopener">Waves SSL G-Master Buss Compressor</a> · <a href="https://www.waves.com/plugins/api-2500" target="_blank" rel="noopener">Waves API 2500</a> · <a href="https://www.waves.com/plugins/abbey-road-saturator" target="_blank" rel="noopener">Waves Abbey Road Saturator</a>.</p>
+
           <h3>Stereo e low-end</h3>
           <p>Kick e basse centrali; hat e perc portano la larghezza. <code>Utility</code> Width 95-105% sul bus. Verifica a Width 0%: se spariscono elementi essenziali, è fase o layering stereo mal costruito.</p>
         </div>
@@ -1537,8 +1578,44 @@
             <li><strong>Spectrum:</strong> verifica bilanciamento generale, decisioni con l’ascolto e reference level-matched.</li>
           </ul>
 
+          <h3>Alternativa ibrida: Waves + Ableton</h3>
+          <p>Questa è ancora una catena di <strong>mix bus</strong>, non di mastering. Ogni stadio è opzionale: inseriscilo solo dopo aver descritto il problema che deve risolvere.</p>
+          <div class="chainviz" aria-label="Chain ibrida consigliata per il mix bus">
+            <span class="node bus">MASTER</span><span class="arr">→</span>
+            <span class="node opt">Utility (gain)</span><span class="arr">→</span>
+            <span class="node opt">REQ 6 / EQ Eight</span><span class="arr">→</span>
+            <span class="node opt">SSLComp oppure API 2500</span><span class="arr">→</span>
+            <span class="node opt">Saturator o Kramer Tape</span><span class="arr">→</span>
+            <span class="node">Spectrum</span><span class="arr">→</span>
+            <span class="node opt">Utility (mono check)</span>
+          </div>
+
+          <div class="chain-choice-grid" aria-label="Scelta del compressore Waves per il mix bus">
+            <article class="chain-choice">
+              <span class="chain-choice-tag">A · Coesione</span>
+              <h4>SSL G-Master Buss Compressor</h4>
+              <p>Ratio 2:1, attack 30 ms, release Auto, SC Filter 60-120 Hz e 0.5-2 dB di GR nei passaggi più pieni. Se il drop diventa più piccolo o il kick arretra, riduci la GR o bypassa.</p>
+            </article>
+            <article class="chain-choice api">
+              <span class="chain-choice-tag">B · Controllo del punch</span>
+              <h4>API 2500</h4>
+              <p>Ratio 1.5:1 o 2:1, attack 10-30 ms, release 0.1-0.5 s, Knee Soft/Med, Thrust Norm e 0.5-1.5 dB di GR. Prova Thrust Med solo se il low-end pilota troppo la compressione; confronta Type Old/Feedback e New/Feed Forward a volume pareggiato.</p>
+            </article>
+          </div>
+
+          <ul>
+            <li><strong>REQ 6:</strong> preferiscilo ad API 550 per micro-correzioni continue e ampie, in genere entro ±0.5/1 dB. API 550 lavora a passi di 2-3 dB: usalo solo per una scelta tonale intenzionale, non come EQ correttivo fine sul master.</li>
+            <li><strong>Abbey Road Saturator:</strong> dopo il compressore, opzionale; Compander Blend 0, TG, Gain nella metà inferiore, Mix 5-10%. Pareggia l’output e controlla che i transienti non si accorcino.</li>
+            <li><strong>Kramer Master Tape:</strong> alternativa al Saturator, mai in serie per abitudine. Parti da 15 ips, Repro, Noise e Delay Off, Record Level tra -5 e 0 dBVU e Wow &amp; Flutter basso. Bypassa se il fondo perde precisione o il top si chiude.</li>
+            <li><strong>L2:</strong> può stare temporaneamente in coda per l’ascolto “loud”, con IDR disattivato se non stai riducendo il bit depth. Non sostituisce un controllo true peak e va rimosso dal premaster destinato al mastering.</li>
+          </ul>
+
+          <div class="tip"><strong>Verifica in quattro passaggi:</strong> ascolta il drop più pieno, pareggia il volume on/off, controlla che picchi e headroom restino coerenti, poi fai mono-check e confronto con una reference level-matched. Se il miglioramento scompare a volume uguale, rimuovi il plugin.</div>
+
+          <p class="source-links">Manuali e schede ufficiali: <a href="https://www.waves.com/plugins/renaissance-equalizer" target="_blank" rel="noopener">Waves Renaissance EQ</a> · <a href="https://www.waves.com/plugins/ssl-g-master-buss-compressor" target="_blank" rel="noopener">Waves SSL G-Master Buss Compressor</a> · <a href="https://www.waves.com/plugins/api-2500" target="_blank" rel="noopener">Waves API 2500</a> · <a href="https://www.waves.com/plugins/abbey-road-saturator" target="_blank" rel="noopener">Waves Abbey Road Saturator</a> · <a href="https://www.waves.com/plugins/kramer-master-tape" target="_blank" rel="noopener">Waves Kramer Master Tape</a> · <a href="https://www.waves.com/plugins/l2-ultramaximizer" target="_blank" rel="noopener">Waves L2 Ultramaximizer</a>.</p>
+
           <div class="warning">
-            <strong>Stop qui:</strong> lascia headroom e conserva la dinamica. Un limiter può essere utile solo come ascolto di anteprima; disattivalo quando esporti il premaster destinato al mastering.
+            <strong>Stop qui:</strong> lascia headroom e conserva la dinamica. L2 o un altro limiter possono essere utili solo come ascolto di anteprima; disattivali quando esporti il premaster destinato al mastering.
           </div>
         </div>
 
@@ -1775,7 +1852,7 @@
       </section>
 
       <footer class="footer">
-        Guida pratica di arrangement e mix engineering per house, tech house, deep house, techno ed electro. Le strutture, i range e i valori indicati sono punti di partenza: calibra durata e linguaggio su reference comparabili, poi prendi le decisioni finali a orecchio e nel contesto del brano. La sezione mix usa device stock di Ableton Live 12; la disponibilità di Roar e Hybrid Reverb dipende dall’edizione, con Saturator e Reverb come alternative. Limiting di loudness e delivery finale restano fuori dall’ambito del premaster descritto qui.
+        Guida pratica di arrangement e mix engineering per house, tech house, deep house, techno ed electro. Le strutture, i range e i valori indicati sono punti di partenza: calibra durata e linguaggio su reference comparabili, poi prendi le decisioni finali a orecchio e nel contesto del brano. La sezione mix parte dai device stock di Ableton Live 12 e integra alternative ibride con i plugin Waves V16 installati nelle sezioni Drum bus e Master bus; la disponibilità di Roar e Hybrid Reverb dipende dall’edizione, con Saturator e Reverb come alternative. Limiting di loudness e delivery finale restano fuori dall’ambito del premaster descritto qui.
       </footer>
     </main>
   </div>
